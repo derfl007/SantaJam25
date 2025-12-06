@@ -2,6 +2,7 @@ using Godot;
 
 namespace SantaJam25.scripts.resources;
 
+[GlobalClass]
 public partial class Component : Resource
 {
     [Export]
@@ -23,5 +24,5 @@ public partial class Component : Resource
     public int Demand { get; set; }
 
     [Export(PropertyHint.Range, "0,100")]
-    public int Sustainability { get; set; }
+    public int NatureDebt { get; set; }
 }

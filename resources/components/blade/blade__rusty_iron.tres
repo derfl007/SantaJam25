@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Component" load_steps=2 format=3 uid="uid://ctdqem2odv01g"]
+
+[ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="1_xh4ue"]
+
+[resource]
+script = ExtResource("1_xh4ue")
+Name = "Rusty Iron Blade"
+Description = "A cheap rusty iron blade with low durability"
+Cost = 2
+Demand = 5
+metadata/_custom_type_script = "uid://7vh6twlpsabw"

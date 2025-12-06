@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Component" load_steps=2 format=3 uid="uid://ddcc3kf2s6vb2"]
+
+[ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="1_x71ca"]
+
+[resource]
+script = ExtResource("1_x71ca")
+Name = "Leather Hilt"
+Description = "A cheap leather hilt"
+ComponentType = 1
+Cost = 1
+Demand = 2
+metadata/_custom_type_script = "uid://7vh6twlpsabw"

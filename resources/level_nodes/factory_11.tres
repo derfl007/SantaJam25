@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelNode" load_steps=3 format=3 uid="uid://d0y47y1f3pjru"]
+
+[ext_resource type="Resource" uid="uid://cfwrhijf5howk" path="res://resources/level_nodes/factory_12.tres" id="1_67s3b"]
+[ext_resource type="Script" uid="uid://7etw0fiuq5hq" path="res://scripts/resources/LevelNode.cs" id="2_kfe2c"]
+
+[resource]
+script = ExtResource("2_kfe2c")
+Name = "factory_11"
+NextNodes = Array[Object]([ExtResource("1_67s3b")])
+TileMapCoords = Vector2i(19, 10)
+Type = 2
+metadata/_custom_type_script = "uid://7etw0fiuq5hq"

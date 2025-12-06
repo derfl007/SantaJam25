@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c677fsgub0xx0"]
+
+[ext_resource type="Script" uid="uid://f81v4wa4qsl8" path="res://scripts/scenes/LevelNode.cs" id="1_hcovq"]
+[ext_resource type="Texture2D" uid="uid://b38uikc4gg0hm" path="res://assets/sprites/roguelikeSheet_transparent.png" id="1_o8qld"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8qld"]
+atlas = ExtResource("1_o8qld")
+region = Rect2(612, 153, 16, 16)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o8qld"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(0, -10, 0)
+scale_min = 0.19999999
+scale_max = 0.59999996
+
+[node name="LevelNode" type="Node2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_o8qld")
+region_enabled = true
+region_rect = Rect2(221, 0, 16, 16)
+script = ExtResource("1_hcovq")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_o8qld")
+process_material = SubResource("ParticleProcessMaterial_o8qld")

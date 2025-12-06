@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Component" load_steps=2 format=3 uid="uid://bakkf35su8ycg"]
+
+[ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="1_17q0g"]
+
+[resource]
+script = ExtResource("1_17q0g")
+Name = "Water Quench"
+Description = "A simple water quench. Enough to make the blade sturdier, but provides not special effects"
+ComponentType = 2
+metadata/_custom_type_script = "uid://7vh6twlpsabw"

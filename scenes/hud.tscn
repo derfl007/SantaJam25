@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8075n81uvjpm"]
+
+[ext_resource type="Texture2D" uid="uid://b38uikc4gg0hm" path="res://assets/sprites/roguelikeSheet_transparent.png" id="1_ahhtf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oo0fn"]
+texture = ExtResource("1_ahhtf")
+texture_margin_left = 1.0
+texture_margin_top = 2.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+region_rect = Rect2(273, 5, 14, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ysmq"]
+atlas = ExtResource("1_ahhtf")
+region = Rect2(731, 170, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6fi6k"]
+line_spacing = 0.0
+font_size = 10
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_top = 8.0
+offset_right = -93.0
+offset_bottom = 23.0
+grow_horizontal = 0
+scale = Vector2(4, 4)
+theme_override_styles/panel = SubResource("StyleBoxTexture_oo0fn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_5ysmq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_6fi6k")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelNode" load_steps=2 format=3 uid="uid://dygff716x47mc"]
+
+[ext_resource type="Script" uid="uid://7etw0fiuq5hq" path="res://scripts/resources/LevelNode.cs" id="1_pjvew"]
+
+[resource]
+script = ExtResource("1_pjvew")
+Name = "event_fish"
+NextNodes = null
+TileMapCoords = Vector2i(23, 3)
+metadata/_custom_type_script = "uid://7etw0fiuq5hq"

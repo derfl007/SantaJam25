@@ -11,9 +11,22 @@ config_version=5
 [application]
 
 config/name="SantaJam25"
-config/features=PackedStringArray("4.5")
+run/main_scene="uid://cj0u1btrjdiuj"
+config/features=PackedStringArray("4.5", "C#")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalGameState="*res://scripts/autoload/GlobalGameState.cs"
 
 [dotnet]
 
 project/assembly_name="SantaJam25"
+
+[gui]
+
+theme/custom_font="uid://8htxw5mm8mtq"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

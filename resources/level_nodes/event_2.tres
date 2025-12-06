@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelNode" load_steps=5 format=3 uid="uid://dvsaw1cw67qjp"]
+
+[ext_resource type="Resource" uid="uid://dxmxslp5u3mu4" path="res://resources/level_nodes/factory_3.tres" id="1_3ye4n"]
+[ext_resource type="Resource" uid="uid://dm44bcafq2bal" path="res://resources/level_nodes/shop_2.tres" id="2_ewyjf"]
+[ext_resource type="Resource" uid="uid://dygff716x47mc" path="res://resources/level_nodes/event_fish.tres" id="3_ewyjf"]
+[ext_resource type="Script" uid="uid://7etw0fiuq5hq" path="res://scripts/resources/LevelNode.cs" id="3_qhicv"]
+
+[resource]
+script = ExtResource("3_qhicv")
+Name = "event_2"
+NextNodes = Array[Object]([ExtResource("1_3ye4n"), ExtResource("2_ewyjf"), ExtResource("3_ewyjf")])
+TileMapCoords = Vector2i(15, 3)
+metadata/_custom_type_script = "uid://7etw0fiuq5hq"
