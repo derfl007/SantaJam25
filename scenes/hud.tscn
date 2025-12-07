@@ -57,7 +57,8 @@ texture = SubResource("AtlasTexture_5ysmq")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Control/PanelContainer/HBoxContainer"]
+[node name="GoldLabel" type="Label" parent="Control/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_6fi6k")

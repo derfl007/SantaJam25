@@ -69,6 +69,7 @@ unique_name_in_owner = true
 position = Vector2(24, 24)
 
 [node name="HUD" parent="." instance=ExtResource("31_46sbo")]
+unique_name_in_owner = true
 
 [node name="NodeOverlay" type="CanvasLayer" parent="."]
 unique_name_in_owner = true

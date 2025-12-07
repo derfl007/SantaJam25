@@ -13,6 +13,7 @@ public partial class WorldMap : Node2D
 {
     private LevelNode _currentNode;
     private GlobalGameState _globalGameState;
+    private CanvasLayer _hud;
 
     private bool _isNodeOverlayOpen;
     private TileMapLayer _nodeMapLayer;
@@ -27,9 +28,17 @@ public partial class WorldMap : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        _hud = GetNode<CanvasLayer>("%HUD");
+
         _globalGameState = this.GetGlobalGameState();
 
+        _globalGameState.SaveUpdate += () =>
+        {
+            _hud.GetNode<Label>("%GoldLabel").Text = _globalGameState.CurrentSave.Gold.ToString();
+        };
+
         _globalGameState.LoadGame();
+
 
         _nodeMapLayer = GetNode<TileMapLayer>("%NodeMapLayer");
         _player = GetNode<WorldMapPlayer>("%WorldMapPlayer");
@@ -58,6 +67,7 @@ public partial class WorldMap : Node2D
 
     public override void _UnhandledInput(InputEvent @event)
     {
+        if (_isNodeOverlayOpen) return;
         switch (@event)
         {
             case InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left }:

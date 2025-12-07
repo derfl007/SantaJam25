@@ -1,12 +1,25 @@
-[gd_resource type="Resource" script_class="Component" load_steps=2 format=3 uid="uid://ddcc3kf2s6vb2"]
+[gd_resource type="Resource" script_class="Component" load_steps=6 format=3 uid="uid://ddcc3kf2s6vb2"]
 
+[ext_resource type="Texture2D" uid="uid://bjo8a3714f6qu" path="res://assets/sprites/weapons_spritesheet.png" id="1_21xpc"]
+[ext_resource type="Script" uid="uid://b3xvqi7mjldq4" path="res://scripts/resources/ComponentStats.cs" id="1_qs36l"]
 [ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="1_x71ca"]
+
+[sub_resource type="Resource" id="Resource_w1j3m"]
+script = ExtResource("1_qs36l")
+Cost = 5
+Demand = 10
+NatureDebt = 20
+metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs36l"]
+atlas = ExtResource("1_21xpc")
+region = Rect2(6, 20, 10, 10)
 
 [resource]
 script = ExtResource("1_x71ca")
 Name = "Leather Hilt"
 Description = "A cheap leather hilt"
+Texture = SubResource("AtlasTexture_qs36l")
 ComponentType = 1
-Cost = 1
-Demand = 2
+ComponentStats = SubResource("Resource_w1j3m")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

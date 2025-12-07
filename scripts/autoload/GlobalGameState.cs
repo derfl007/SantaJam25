@@ -5,6 +5,9 @@ namespace SantaJam25.scripts.autoload;
 
 public partial class GlobalGameState : Node
 {
+    [Signal]
+    public delegate void SaveUpdateEventHandler();
+
     private const string SavePath = "user://savegame.tres";
 
     [Export]
@@ -25,6 +28,7 @@ public partial class GlobalGameState : Node
         }
 
         CurrentSave = ResourceLoader.Load<SaveState>(SavePath);
+        EmitSignalSaveUpdate();
 
         GD.Print("Game loaded");
     }
@@ -33,6 +37,8 @@ public partial class GlobalGameState : Node
     {
         GD.Print("Saving game...");
         ResourceSaver.Save(CurrentSave, SavePath);
+        EmitSignalSaveUpdate();
+        GD.Print("Game saved");
     }
 
     public override void _ExitTree()

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://d22fs1n1v0v0s"]
+
+[ext_resource type="Script" uid="uid://dwn7osxi1dvs5" path="res://scripts/scenes/Cards.cs" id="1_mnqni"]
+[ext_resource type="PackedScene" uid="uid://dughbdsofwmuk" path="res://scenes/card.tscn" id="2_pqter"]
+[ext_resource type="Resource" uid="uid://ddcc3kf2s6vb2" path="res://resources/components/hilt/leather.tres" id="3_8a8qm"]
+[ext_resource type="Resource" uid="uid://bakkf35su8ycg" path="res://resources/components/quench/water.tres" id="4_pqter"]
+
+[sub_resource type="Curve2D" id="Curve2D_crpm8"]
+_data = {
+"points": PackedVector2Array(-300, 0, 0, 0, 128, 16, -300, 0, 300, 0, 576, -24, 0, 0, 0, 0, 1024, 16)
+}
+point_count = 3
+
+[node name="Cards" type="Path2D"]
+curve = SubResource("Curve2D_crpm8")
+script = ExtResource("1_mnqni")
+_distanceBetweenCards = 50.0
+_distanceToHighlightedCard = 150.0
+
+[node name="Card" parent="." instance=ExtResource("2_pqter")]
+position = Vector2(884.10376, -7.5774593)
+rotation = 0.11750586
+progress = 759.37683
+
+[node name="Card2" parent="." instance=ExtResource("2_pqter")]
+position = Vector2(537.6932, -23.779291)
+rotation = -0.011612241
+progress = 412.36194
+Component = ExtResource("3_8a8qm")
+
+[node name="Card3" parent="." instance=ExtResource("2_pqter")]
+position = Vector2(248.2156, -5.147212)
+rotation = -0.12835003
+progress = 122.13123
+Component = ExtResource("4_pqter")
