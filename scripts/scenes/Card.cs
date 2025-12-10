@@ -6,6 +6,7 @@ namespace SantaJam25.scripts.scenes;
 public partial class Card : PathFollow2D
 {
     private bool _disabled;
+    private float _lerpProgress;
     private Sprite2D _sprite;
 
     [Export]

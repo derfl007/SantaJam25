@@ -32,9 +32,12 @@ public partial class WorldMap : Node2D
 
         _globalGameState = this.GetGlobalGameState();
 
+        _hud.GetNode<Label>("%MoneyLabel").Text = _globalGameState.CurrentSave.PlayerStats.Money.ToString();
+
         _globalGameState.SaveUpdate += () =>
         {
-            _hud.GetNode<Label>("%GoldLabel").Text = _globalGameState.CurrentSave.Gold.ToString();
+            GD.Print($"Current gold: {_globalGameState.CurrentSave.PlayerStats.Money}");
+            _hud.GetNode<Label>("%MoneyLabel").Text = _globalGameState.CurrentSave.PlayerStats.Money.ToString();
         };
 
         _globalGameState.LoadGame();

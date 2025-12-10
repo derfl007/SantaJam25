@@ -9,11 +9,14 @@ namespace SantaJam25.scripts.resources;
 [GlobalClass]
 public partial class ComponentStats : Resource
 {
-    [Export(PropertyHint.Range, "0,100")]
+    [Export]
     public int Cost { get; set; }
 
-    [Export(PropertyHint.Range, "0,100")]
-    public int Demand { get; set; }
+    [Export]
+    public int BaseValue { get; set; }
+
+    [Export(PropertyHint.Range, "0,2")]
+    public float Demand { get; set; }
 
     [Export(PropertyHint.Range, "0,100")]
     public int NatureDebt { get; set; }

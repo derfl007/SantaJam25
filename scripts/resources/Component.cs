@@ -25,11 +25,14 @@ public partial class Component : Resource
     public ComponentType ComponentType { get; set; }
 
     /// <summary>
-    ///     Influences the price of weapons created with this component,
-    ///     but also how much nature debt is acquired with each usage.
+    ///     Influences how much nature debt is acquired with each usage.
+    ///     Is multiplied with the number of sales a weapon with this component gets in a round.
     /// </summary>
-    [Export(PropertyHint.Range, "1,5")]
-    public int Rarity { get; set; }
+    [Export(PropertyHint.Range, "0,2")]
+    public float NatureImpactFactor { get; set; }
+
+    [Export]
+    public float BaseCost { get; set; }
 
     [Export]
     public ComponentStats ComponentStats { get; set; }
@@ -39,9 +42,9 @@ public partial class Component : Resource
     /// </summary>
     public void IncreaseUsage()
     {
-        ComponentStats.NatureDebt += Math.Min((int)Math.Floor(RarityNatureDebtFactor * Rarity), 100);
-        ComponentStats.Demand -= Math.Max(5 - (int)Math.Floor(RarityDemandFactor * Rarity), 0);
-        ComponentStats.Cost = (int)Math.Floor(RarityCostFactor * Rarity +
+        ComponentStats.NatureDebt += Math.Min((int)Math.Floor(RarityNatureDebtFactor * NatureImpactFactor), 100);
+        ComponentStats.Demand -= Math.Max(5 - (int)Math.Floor(RarityDemandFactor * NatureImpactFactor), 0);
+        ComponentStats.Cost = (int)Math.Floor(RarityCostFactor * NatureImpactFactor +
                                               NatureDebtCostFactor * ComponentStats.NatureDebt +
                                               DemandCostFactor * ComponentStats.Demand);
     }

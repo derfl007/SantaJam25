@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://54ukv0iq5m0p"]
 
-[ext_resource type="Script" uid="uid://cweufpo0lcjrp" path="res://scripts/scenes/Weapon.cs" id="1_uxn4k"]
+[ext_resource type="Script" uid="uid://cweufpo0lcjrp" path="res://scripts/scenes/WeaponScene.cs" id="1_uxn4k"]
 [ext_resource type="Texture2D" uid="uid://bjo8a3714f6qu" path="res://assets/sprites/weapons_spritesheet.png" id="2_uxn4k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xasec"]
