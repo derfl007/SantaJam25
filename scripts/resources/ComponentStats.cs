@@ -15,7 +15,7 @@ public partial class ComponentStats : Resource
     [Export]
     public int BaseValue { get; set; }
 
-    [Export(PropertyHint.Range, "0,2")]
+    [Export(PropertyHint.Range, "1,10")]
     public float Demand { get; set; }
 
     [Export(PropertyHint.Range, "0,100")]

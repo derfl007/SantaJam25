@@ -6,12 +6,6 @@ namespace SantaJam25.scripts.resources;
 [GlobalClass]
 public partial class Component : Resource
 {
-    private const float RarityCostFactor = 1.0f;
-    private const float NatureDebtCostFactor = 1.0f;
-    private const float DemandCostFactor = 1.0f;
-    private const float RarityDemandFactor = 1.0f;
-    private const float RarityNatureDebtFactor = 1.0f;
-
     [Export]
     public string Name { get; set; }
 
@@ -20,6 +14,9 @@ public partial class Component : Resource
 
     [Export]
     public Texture2D Texture { get; set; }
+
+    [Export]
+    public Color Color { get; set; }
 
     [Export]
     public ComponentType ComponentType { get; set; }
@@ -36,16 +33,4 @@ public partial class Component : Resource
 
     [Export]
     public ComponentStats ComponentStats { get; set; }
-
-    /// <summary>
-    ///     Increases natureDebt, slightly reduces demand and raises cost for the next round.
-    /// </summary>
-    public void IncreaseUsage()
-    {
-        ComponentStats.NatureDebt += Math.Min((int)Math.Floor(RarityNatureDebtFactor * NatureImpactFactor), 100);
-        ComponentStats.Demand -= Math.Max(5 - (int)Math.Floor(RarityDemandFactor * NatureImpactFactor), 0);
-        ComponentStats.Cost = (int)Math.Floor(RarityCostFactor * NatureImpactFactor +
-                                              NatureDebtCostFactor * ComponentStats.NatureDebt +
-                                              DemandCostFactor * ComponentStats.Demand);
-    }
 }

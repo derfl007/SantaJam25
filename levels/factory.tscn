@@ -1,10 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk6v5i7162gb0"]
+[gd_scene load_steps=15 format=3 uid="uid://dk6v5i7162gb0"]
 
 [ext_resource type="Script" uid="uid://bcwan58i1faoh" path="res://scripts/levels/Factory.cs" id="1_crpm8"]
 [ext_resource type="PackedScene" uid="uid://54ukv0iq5m0p" path="res://scenes/weapon.tscn" id="2_ffyh4"]
+[ext_resource type="Resource" uid="uid://ctdqem2odv01g" path="res://resources/components/blade/normal_blade.tres" id="2_uspe2"]
+[ext_resource type="Resource" uid="uid://750lmks88p6n" path="res://resources/components/blade/cheap_blade.tres" id="3_buliu"]
+[ext_resource type="Resource" uid="uid://ddcc3kf2s6vb2" path="res://resources/components/hilt/leather.tres" id="3_kvysc"]
 [ext_resource type="PackedScene" uid="uid://d22fs1n1v0v0s" path="res://scenes/cards.tscn" id="3_nmwqk"]
+[ext_resource type="Resource" uid="uid://bakkf35su8ycg" path="res://resources/components/quench/water.tres" id="4_buliu"]
 [ext_resource type="Texture2D" uid="uid://bo34543jg4fkw" path="res://assets/sprites/minigame_overlay.png" id="4_ffyh4"]
+[ext_resource type="Resource" uid="uid://1db8ucdhcqid" path="res://resources/components/blade/expensive_blade.tres" id="4_i1s1t"]
+[ext_resource type="PackedScene" uid="uid://dughbdsofwmuk" path="res://scenes/card.tscn" id="5_i1s1t"]
 [ext_resource type="PackedScene" uid="uid://glipbb2vfrr5" path="res://scenes/player_results.tscn" id="5_iwnnw"]
+[ext_resource type="Resource" uid="uid://blkrhykgbj3mp" path="res://resources/components/quench/health_potion.tres" id="7_i1s1t"]
 
 [sub_resource type="Gradient" id="Gradient_ffyh4"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -21,6 +28,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_crpm8")
+_bladeComponents = Array[Object]([ExtResource("2_uspe2"), ExtResource("3_buliu"), ExtResource("4_i1s1t")])
+_hiltComponents = Array[Object]([ExtResource("3_kvysc")])
+_quenchComponents = Array[Object]([ExtResource("4_buliu"), ExtResource("7_i1s1t")])
+_cardScene = ExtResource("5_i1s1t")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -74,7 +85,6 @@ grow_vertical = 2
 
 [node name="CostLabel" type="RichTextLabel" parent="VBoxContainer/WeaponContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -96,13 +106,13 @@ text = "Cost: [color=gold]3 Gold"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CardsContainer" type="Control" parent="VBoxContainer"]
+[node name="HiltCardsContainer" type="Control" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="VBoxContainer/CardsContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/HiltCardsContainer"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -116,11 +126,10 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="Cards" parent="VBoxContainer/CardsContainer/Control" instance=ExtResource("3_nmwqk")]
-unique_name_in_owner = true
+[node name="Cards" parent="VBoxContainer/HiltCardsContainer/Control" instance=ExtResource("3_nmwqk")]
 position = Vector2(-128, 56)
 
-[node name="Label" type="RichTextLabel" parent="VBoxContainer/CardsContainer"]
+[node name="Label" type="RichTextLabel" parent="VBoxContainer/HiltCardsContainer"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -139,12 +148,151 @@ theme_override_font_sizes/bold_italics_font_size = 20
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
-text = "Select Components and press [color=cyan]E[/color] when done to finish your weapon design"
+text = "Select a hilt and press [color=cyan]E[/color] to continue"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MessageLabel" type="RichTextLabel" parent="VBoxContainer/CardsContainer"]
+[node name="MessageLabel" type="RichTextLabel" parent="VBoxContainer/HiltCardsContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -121.0
+offset_right = 272.0
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BladeCardsContainer" type="Control" parent="VBoxContainer"]
 unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/BladeCardsContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -448.0
+offset_top = -72.0
+offset_right = 448.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Cards" parent="VBoxContainer/BladeCardsContainer/Control" instance=ExtResource("3_nmwqk")]
+unique_name_in_owner = true
+position = Vector2(-128, 56)
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer/BladeCardsContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -89.0
+offset_right = 272.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Select a blade and press [color=cyan]E[/color] to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MessageLabel" type="RichTextLabel" parent="VBoxContainer/BladeCardsContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -121.0
+offset_right = 272.0
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuenchCardsContainer" type="Control" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/QuenchCardsContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -448.0
+offset_top = -72.0
+offset_right = 448.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Cards" parent="VBoxContainer/QuenchCardsContainer/Control" instance=ExtResource("3_nmwqk")]
+position = Vector2(-128, 56)
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer/QuenchCardsContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -89.0
+offset_right = 272.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Select a quench type and press [color=cyan]E[/color] to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MessageLabel" type="RichTextLabel" parent="VBoxContainer/QuenchCardsContainer"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -260,9 +408,9 @@ anchor_left = 0.5
 anchor_top = 0.105000004
 anchor_right = 0.5
 anchor_bottom = 0.94600004
-offset_left = -512.0
+offset_left = -208.0
 offset_top = 0.024999619
-offset_right = 512.0
+offset_right = 208.0
 offset_bottom = -0.070007324
 grow_horizontal = 2
 grow_vertical = 2
@@ -299,3 +447,59 @@ bbcode_enabled = true
 text = "[color=green]Player[/color] wins this round! Press [color=cyan]E[/color] to continue"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Weapon1" parent="VBoxContainer/ResultsContainer" instance=ExtResource("2_ffyh4")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -472.0
+offset_top = -116.5
+offset_right = -238.0
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Weapon2" parent="VBoxContainer/ResultsContainer" instance=ExtResource("2_ffyh4")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -472.0
+offset_top = 11.5
+offset_right = -238.0
+offset_bottom = 128.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Weapon3" parent="VBoxContainer/ResultsContainer" instance=ExtResource("2_ffyh4")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 240.0
+offset_top = 11.5
+offset_right = 474.0
+offset_bottom = 128.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Weapon4" parent="VBoxContainer/ResultsContainer" instance=ExtResource("2_ffyh4")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 240.0
+offset_top = -116.5
+offset_right = 474.0
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2

@@ -12,7 +12,7 @@ public partial class PlayerStats : Resource
     public bool IsPlayer;
 
     [Export]
-    public int Money;
+    public int Money = 100;
 
     [Export]
     public string Name { get; set; }

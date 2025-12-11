@@ -1,7 +1,8 @@
 using Godot;
-using System;
 
-public partial class PlayerResults : VBoxContainer
+namespace SantaJam25.scripts.scenes;
+
+public partial class PlayerResults : Control
 {
     private Label _goldLabel;
     private Label _salesLabel;
@@ -10,10 +11,10 @@ public partial class PlayerResults : VBoxContainer
 
     public override void _Ready()
     {
-        _goldLabel = GetNode<Label>("GoldLabel");
-        _salesLabel = GetNode<Label>("SalesLabel");
-        _shareProgressBar = GetNode<TextureProgressBar>("ShareProgressBar");
-        _nameLabel = GetNode<Label>("NameLabel");
+        _goldLabel = GetNode<Label>("VBoxContainer/GoldLabel");
+        _salesLabel = GetNode<Label>("VBoxContainer/SalesLabel");
+        _shareProgressBar = GetNode<TextureProgressBar>("VBoxContainer/ShareProgressBar");
+        _nameLabel = GetNode<Label>("VBoxContainer/NameLabel");
     }
 
     public void UpdateValues((int gold, int sales, int share, string playerName) values)

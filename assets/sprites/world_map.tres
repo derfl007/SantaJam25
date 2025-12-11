@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=37 format=3 uid="uid://brdjhfogm4en3"]
+[gd_resource type="TileSet" load_steps=38 format=3 uid="uid://brdjhfogm4en3"]
 
 [ext_resource type="Texture2D" uid="uid://b38uikc4gg0hm" path="res://assets/sprites/roguelikeSheet_transparent.png" id="1_id1bq"]
 
@@ -30,6 +30,12 @@ agent_radius = 0.0
 vertices = PackedVector2Array(4, 4, -8, 4, -8, -4, 4, -4)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -4, 4, -4, 4, 4, -8, 4)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7upa0"]
+vertices = PackedVector2Array(8, 4, -8, 4, -8, -4, 8, -4)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -4, 8, -4, 8, 4, -8, 4)])
 agent_radius = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mf0vu"]
@@ -1255,11 +1261,14 @@ separation = Vector2i(1, 1)
 2:12/0 = 0
 3:12/0 = 0
 4:12/0 = 0
+5:12/next_alternative_id = 2
 5:12/0 = 0
 5:12/0/terrain_set = 0
 5:12/0/terrain = 4
 5:12/0/terrains_peering_bit/left_side = 4
 5:12/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_c0xhu")
+5:12/1 = 1
+5:12/1/navigation_layer_0/polygon = SubResource("NavigationPolygon_7upa0")
 6:12/0 = 0
 6:12/0/terrain_set = 0
 6:12/0/terrain = 4

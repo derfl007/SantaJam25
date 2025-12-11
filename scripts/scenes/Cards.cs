@@ -93,6 +93,7 @@ public partial class Cards : Path2D
 
     public void AddCard(Card card)
     {
+        AddChild(card);
         card.Area2D.MouseEntered += () => _hoveredCards.Add(card);
         card.Area2D.MouseExited += () => _hoveredCards.Remove(card);
         _cards.Add(card);

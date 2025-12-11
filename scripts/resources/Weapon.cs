@@ -27,20 +27,13 @@ public partial class Weapon : Resource
                (Quench?.ComponentStats.Cost ?? 0);
     }
 
-    public void IncreaseComponentUsages()
-    {
-        Blade.IncreaseUsage();
-        Hilt.IncreaseUsage();
-        Quench.IncreaseUsage();
-    }
-
-    public int CalculateMarketPower()
+    public float CalculateMarketPower()
     {
         var totalDemand = Blade.ComponentStats.Demand +
                           Hilt.ComponentStats.Demand +
                           Quench.ComponentStats.Demand;
 
-        return (int)Math.Floor(totalDemand * Quality);
+        return totalDemand * Quality;
     }
 
     public int CalculateProfit(int sales)
@@ -49,6 +42,18 @@ public partial class Weapon : Resource
                              Hilt.ComponentStats.BaseValue +
                              Quench.ComponentStats.BaseValue;
 
-        return totalBaseValue * sales - GetTotalCost();
+        return (totalBaseValue - GetTotalCost()) * sales;
+    }
+
+    public override string ToString()
+    {
+        return
+            $"Blade: {Blade.Name}, " +
+            $"Hilt: {Hilt.Name}, " +
+            $"Quench: {Quench.Name}, " +
+            $"Quality: {Quality}, " +
+            $"Total Cost: {GetTotalCost()}, " +
+            $"Market Power: {CalculateMarketPower()}, " +
+            $"Profit per sale: {CalculateProfit(1)}";
     }
 }

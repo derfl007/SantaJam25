@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dughbdsofwmuk"]
 
 [ext_resource type="Script" uid="uid://cn4cjngktajur" path="res://scripts/scenes/Card.cs" id="1_d81rb"]
-[ext_resource type="Resource" uid="uid://ctdqem2odv01g" path="res://resources/components/blade/blade__rusty_iron.tres" id="2_6u4wf"]
+[ext_resource type="Resource" uid="uid://ctdqem2odv01g" path="res://resources/components/blade/normal_blade.tres" id="2_6u4wf"]
 [ext_resource type="Texture2D" uid="uid://bjo8a3714f6qu" path="res://assets/sprites/weapons_spritesheet.png" id="3_ktuci"]
 
 [sub_resource type="Gradient" id="Gradient_d81rb"]

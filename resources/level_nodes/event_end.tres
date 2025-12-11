@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelNode" load_steps=2 format=3 uid="uid://ml5mb8om34jm"]
+
+[ext_resource type="Script" uid="uid://7etw0fiuq5hq" path="res://scripts/resources/LevelNode.cs" id="1_st2gl"]
+
+[resource]
+script = ExtResource("1_st2gl")
+Name = "event_end"
+NextNodes = Array[Object]([])
+TileMapCoords = Vector2i(12, 11)
+metadata/_custom_type_script = "uid://7etw0fiuq5hq"

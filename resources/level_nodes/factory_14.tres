@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="LevelNode" load_steps=3 format=3 uid="uid://m404qn8d33tj"]
 
-[ext_resource type="Resource" uid="uid://cauttlyks8ogq" path="res://resources/level_nodes/factory_15.tres" id="1_unpsf"]
+[ext_resource type="Resource" uid="uid://ml5mb8om34jm" path="res://resources/level_nodes/event_end.tres" id="1_unpsf"]
 [ext_resource type="Script" uid="uid://7etw0fiuq5hq" path="res://scripts/resources/LevelNode.cs" id="2_miq7s"]
 
 [resource]

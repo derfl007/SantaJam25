@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Component" load_steps=6 format=3 uid="uid://750lmks88p6n"]
+
+[ext_resource type="Script" uid="uid://b3xvqi7mjldq4" path="res://scripts/resources/ComponentStats.cs" id="1_y73x4"]
+[ext_resource type="Texture2D" uid="uid://bjo8a3714f6qu" path="res://assets/sprites/weapons_spritesheet.png" id="2_0m2fe"]
+[ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="3_dgnky"]
+
+[sub_resource type="Resource" id="Resource_0vlv8"]
+script = ExtResource("1_y73x4")
+Cost = 5
+BaseValue = 10
+Demand = 8.0
+metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykgyi"]
+atlas = ExtResource("2_0m2fe")
+region = Rect2(17, 37, 10, 10)
+
+[resource]
+script = ExtResource("3_dgnky")
+Name = "Cheap Blade"
+Description = "A cheap rusty iron blade with low durability"
+Texture = SubResource("AtlasTexture_ykgyi")
+NatureImpactFactor = 0.5
+BaseCost = 5.0
+ComponentStats = SubResource("Resource_0vlv8")
+metadata/_custom_type_script = "uid://7vh6twlpsabw"

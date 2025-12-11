@@ -16,9 +16,8 @@ public partial class WeaponScene : Control
     private TextureRect _hiltTextureRect;
     private Component _quench;
 
-    private GpuParticles2D _quenchParticles;
 
-    public Weapon Weapon { get; private set; } = new();
+    public Weapon Weapon { get; set; } = new();
 
 // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -27,7 +26,6 @@ public partial class WeaponScene : Control
 
         _hiltTextureRect = GetNode<TextureRect>("HiltTextureRect");
         _bladeTextureRect = GetNode<TextureRect>("BladeTextureRect");
-        _quenchParticles = GetNode<GpuParticles2D>("QuenchParticleEmitter");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,6 +37,7 @@ public partial class WeaponScene : Control
     {
         _bladeTextureRect.Texture = Weapon.Blade?.Texture;
         _hiltTextureRect.Texture = Weapon.Hilt?.Texture;
-        _quenchParticles.Texture = Weapon.Quench?.Texture;
+        _bladeTextureRect.SetInstanceShaderParameter("line_color",
+            Weapon.Quench?.Color ?? Colors.White);
     }
 }
