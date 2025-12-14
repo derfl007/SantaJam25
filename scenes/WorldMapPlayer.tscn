@@ -1,20 +1,108 @@
-[gd_scene load_steps=5 format=3 uid="uid://ir7x5qr2sjm1"]
+[gd_scene load_steps=18 format=3 uid="uid://ir7x5qr2sjm1"]
 
 [ext_resource type="Script" uid="uid://dcaowpqh63x6w" path="res://scripts/scenes/WorldMapPlayer.cs" id="1_7r3d5"]
-[ext_resource type="Texture2D" uid="uid://drcp03vsjsmgh" path="res://assets/sprites/sprite_player.tres" id="2_0v5y8"]
+[ext_resource type="Texture2D" uid="uid://c230kwbvf6e13" path="res://assets/sprites/walknut.png" id="2_0v5y8"]
 [ext_resource type="Texture2D" uid="uid://b38uikc4gg0hm" path="res://assets/sprites/roguelikeSheet_transparent.png" id="3_0v5y8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lw2a3"]
+atlas = ExtResource("2_0v5y8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je2e3"]
+atlas = ExtResource("2_0v5y8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qpi1"]
+atlas = ExtResource("2_0v5y8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrceh"]
+atlas = ExtResource("2_0v5y8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb3y3"]
+atlas = ExtResource("2_0v5y8")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r63if"]
+atlas = ExtResource("2_0v5y8")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ksg"]
+atlas = ExtResource("2_0v5y8")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdel6"]
+atlas = ExtResource("2_0v5y8")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_romnv"]
+atlas = ExtResource("2_0v5y8")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roode"]
+atlas = ExtResource("2_0v5y8")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4wbqe"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_lw2a3")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_je2e3")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_3qpi1")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_yrceh")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_vb3y3")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_r63if")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_i4ksg")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_sdel6")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_romnv")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_roode")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hr6o4"]
 radius = 5.0
 
+[sub_resource type="Gradient" id="Gradient_0v5y8"]
+offsets = PackedFloat32Array(0, 0.70642203)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lw2a3"]
+gradient = SubResource("Gradient_0v5y8")
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+
 [node name="WorldMapPlayer" type="CharacterBody2D"]
+modulate = Color(0.49747366, 0.49747366, 0.49747366, 1)
 script = ExtResource("1_7r3d5")
 _movementSpeed = 50.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
-texture = ExtResource("2_0v5y8")
-region_rect = Rect2(0, 0, 16, 16)
+sprite_frames = SubResource("SpriteFrames_4wbqe")
+frame_progress = 0.94607764
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
@@ -61,3 +149,7 @@ bbcode_enabled = true
 text = "Press [color=cyan]E[/color] to start"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1.84375, 1.84375)
+texture = SubResource("GradientTexture2D_lw2a3")

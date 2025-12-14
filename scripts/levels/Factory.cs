@@ -383,16 +383,32 @@ public partial class Factory : NodeOverlay
         GetNode<RichTextLabel>("%ResultsLabel").Text =
             $"[color=green]{winnerName}[/color] wins this round! Press [color=cyan]E[/color] to continue";
 
+        GD.Print("START COMPONENT UPDATE");
+        GD.PrintT("Name", "NatureDebt", "Cost", "Demand", "Sales", "Share");
+
         foreach (var (name, componentSales) in componentUsages)
         {
             var component = componentsUsed.First(t => t.component.Name == name).component;
-            var natureImpactFactor = component.NatureImpactFactor;
-            component.ComponentStats.NatureDebt += (int)Math.Floor(componentSales * natureImpactFactor);
+
+            GD.PrintT(component.Name, component.ComponentStats.NatureDebt, component.ComponentStats.Cost,
+                component.ComponentStats.Demand, componentSales, componentSales / (float)totalSales);
+
+            component.ComponentStats.NatureDebt += (int)Math.Floor(componentSales / component.MaxLifetimeSales * 100);
+
             component.ComponentStats.Cost =
                 (int)Math.Floor(component.BaseCost * (1 + component.ComponentStats.NatureDebt / 100f));
-            component.ComponentStats.Demand += (_targetShare - componentSales / (float)totalSales) * _volatility;
+
+            component.ComponentStats.Demand =
+                Math.Clamp(
+                    component.ComponentStats.Demand + (_targetShare - componentSales / (float)totalSales) * _volatility,
+                    1f, 10f);
+
+            GD.PrintT(component.Name, component.ComponentStats.NatureDebt, component.ComponentStats.Cost,
+                component.ComponentStats.Demand, componentSales, componentSales / (float)totalSales);
             GlobalGameState.Instance.CurrentSave.CurrentComponentStats[name] = component.ComponentStats;
         }
+
+        GD.Print("END COMPONENT UPDATE");
 
         _minigameContainer.Visible = false;
         _resultsContainer.Visible = true;

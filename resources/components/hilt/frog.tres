@@ -17,11 +17,11 @@ region = Rect2(0, 0, 32, 32)
 
 [resource]
 script = ExtResource("3_4pdxl")
-Name = "Capybara Hilt"
+Name = "Frog Hilt"
 Description = "A frog... Ethically sourced of course"
 Texture = SubResource("AtlasTexture_clhbq")
 ComponentType = 1
-NatureImpactFactor = 1.5
+MaxLifetimeSales = 500.0
 BaseCost = 5.0
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

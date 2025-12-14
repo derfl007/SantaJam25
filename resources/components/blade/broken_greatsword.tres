@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Component" load_steps=6 format=3 uid="uid://b5mld1lmbv2kd"]
+
+[ext_resource type="Script" uid="uid://b3xvqi7mjldq4" path="res://scripts/resources/ComponentStats.cs" id="1_xdqsi"]
+[ext_resource type="Texture2D" uid="uid://dmsna30c70snf" path="res://assets/sprites/blades.png" id="2_tvf2f"]
+[ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="3_ofl2u"]
+
+[sub_resource type="Resource" id="Resource_0vlv8"]
+script = ExtResource("1_xdqsi")
+Cost = 10
+BaseValue = 20
+Demand = 5.0
+NatureDebt = 20
+metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdqsi"]
+atlas = ExtResource("2_tvf2f")
+region = Rect2(96, 0, 32, 32)
+filter_clip = true
+
+[resource]
+script = ExtResource("3_ofl2u")
+Name = "Broken Greatsword Blade"
+Description = "A great sword! Also broken though"
+Texture = SubResource("AtlasTexture_xdqsi")
+MaxLifetimeSales = 500.0
+BaseCost = 10.0
+ComponentStats = SubResource("Resource_0vlv8")
+metadata/_custom_type_script = "uid://7vh6twlpsabw"

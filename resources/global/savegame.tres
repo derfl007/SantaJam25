@@ -20,7 +20,7 @@ PlayerTexture = ExtResource("4_p8ra8")
 
 [sub_resource type="Resource" id="Resource_abe0f"]
 script = ExtResource("2_i1tco")
-Name = "Goblin"
+Name = "Wartface"
 PlayerTexture = ExtResource("3_i1tco")
 
 [sub_resource type="Resource" id="Resource_6fxue"]

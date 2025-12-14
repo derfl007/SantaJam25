@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Component" load_steps=6 format=3 uid="uid://dw4vcwo8xejsk"]
+
+[ext_resource type="Script" uid="uid://b3xvqi7mjldq4" path="res://scripts/resources/ComponentStats.cs" id="1_g74j6"]
+[ext_resource type="Texture2D" uid="uid://dmsna30c70snf" path="res://assets/sprites/blades.png" id="2_5smu4"]
+[ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="3_2aee3"]
+
+[sub_resource type="Resource" id="Resource_0vlv8"]
+script = ExtResource("1_g74j6")
+Cost = 10
+BaseValue = 20
+Demand = 5.0
+NatureDebt = 20
+metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g74j6"]
+atlas = ExtResource("2_5smu4")
+region = Rect2(96, 128, 32, 32)
+filter_clip = true
+
+[resource]
+script = ExtResource("3_2aee3")
+Name = "Clip Blade"
+Description = "Some might say it could make a great chain"
+Texture = SubResource("AtlasTexture_g74j6")
+MaxLifetimeSales = 500.0
+BaseCost = 10.0
+ComponentStats = SubResource("Resource_0vlv8")
+metadata/_custom_type_script = "uid://7vh6twlpsabw"

@@ -11,7 +11,7 @@ public partial class WorldMapPlayer : CharacterBody2D
 
     public NavigationAgent2D NavAgent;
 
-    private Sprite2D _sprite;
+    private AnimatedSprite2D _sprite;
 
     public bool IsMoving { get; set; }
 
@@ -19,7 +19,10 @@ public partial class WorldMapPlayer : CharacterBody2D
     {
         NavAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
         NinePatchRect = GetNode<NinePatchRect>("NinePatchRect");
-        _sprite = GetNode<Sprite2D>("Sprite2D");
+        _sprite = GetNode<AnimatedSprite2D>("Sprite2D");
+
+        NavAgent.NavigationFinished += () => _sprite.Stop();
+        NavAgent.PathChanged += () => _sprite.Play();
     }
 
     public override void _PhysicsProcess(double delta)

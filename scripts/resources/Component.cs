@@ -22,11 +22,10 @@ public partial class Component : Resource
     public ComponentType ComponentType { get; set; }
 
     /// <summary>
-    ///     Influences how much nature debt is acquired with each usage.
-    ///     Is multiplied with the number of sales a weapon with this component gets in a round.
+    ///     The maximum sales that this component can have before the nature damage reaches 100%
     /// </summary>
-    [Export(PropertyHint.Range, "0,2")]
-    public float NatureImpactFactor { get; set; }
+    [Export]
+    public float MaxLifetimeSales { get; set; }
 
     [Export]
     public float BaseCost { get; set; }

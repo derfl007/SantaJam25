@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Component" load_steps=6 format=3 uid="uid://bnx5x540mvch1"]
+
+[ext_resource type="Script" uid="uid://b3xvqi7mjldq4" path="res://scripts/resources/ComponentStats.cs" id="1_38hsn"]
+[ext_resource type="Texture2D" uid="uid://dmsna30c70snf" path="res://assets/sprites/blades.png" id="2_mrwa8"]
+[ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="3_ikutx"]
+
+[sub_resource type="Resource" id="Resource_0vlv8"]
+script = ExtResource("1_38hsn")
+Cost = 10
+BaseValue = 20
+Demand = 5.0
+NatureDebt = 20
+metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38hsn"]
+atlas = ExtResource("2_mrwa8")
+region = Rect2(64, 128, 32, 32)
+filter_clip = true
+
+[resource]
+script = ExtResource("3_ikutx")
+Name = "Broadaxe Blade"
+Description = "A simple broadaxe blade"
+Texture = SubResource("AtlasTexture_38hsn")
+MaxLifetimeSales = 500.0
+BaseCost = 10.0
+ComponentStats = SubResource("Resource_0vlv8")
+metadata/_custom_type_script = "uid://7vh6twlpsabw"
