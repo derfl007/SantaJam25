@@ -9,13 +9,16 @@ public partial class Cards : Path2D
     [Signal]
     public delegate void CardSelectedEventHandler(Card card);
 
-    private Array<Card> _cards;
+    public Array<Card> CardArray;
 
     [Export]
     private float _distanceBetweenCards;
 
     [Export]
-    private float _distanceToHighlightedCard;
+    private float _distanceToSelectedCard;
+
+    [Export]
+    private ShaderMaterial _highlightMaterial;
 
     private Array<Card> _hoveredCards = [];
 
@@ -30,7 +33,7 @@ public partial class Cards : Path2D
             card.Area2D.MouseExited += () => _hoveredCards.Remove(card);
         }
 
-        _cards = new Array<Card>(GetChildren().Cast<Card>());
+        CardArray = new Array<Card>(GetChildren().Cast<Card>());
         SpreadCards();
     }
 
@@ -44,20 +47,20 @@ public partial class Cards : Path2D
         }
 
         var highestSelectedCard = _hoveredCards.MaxBy(card => card.ZIndex);
-        HighlightCard(highestSelectedCard);
+        SelectCard(highestSelectedCard);
     }
 
     public void SpreadCards()
     {
-        if (Engine.IsEditorHint()) _cards = new Array<Card>(GetChildren().Cast<Card>());
+        if (Engine.IsEditorHint()) CardArray = new Array<Card>(GetChildren().Cast<Card>());
 
         var pathLength = Curve.GetBakedLength();
-        var requiredLength = _distanceBetweenCards * (_cards.Count - 1);
+        var requiredLength = _distanceBetweenCards * (CardArray.Count - 1);
         var startPos = (pathLength - requiredLength) / 2;
 
-        for (var index = 0; index < _cards.Count; index++)
+        for (var index = 0; index < CardArray.Count; index++)
         {
-            var card = _cards[index];
+            var card = CardArray[index];
             card.TargetProgress = startPos;
             card.TargetYPosition = 0f;
             card.ZIndex = index;
@@ -65,21 +68,21 @@ public partial class Cards : Path2D
         }
     }
 
-    public void HighlightCard(Card highlightedCard)
+    public void SelectCard(Card highlightedCard)
     {
         var pathLength = Curve.GetBakedLength();
-        var requiredLength = _distanceBetweenCards * (_cards.Count - 3) + _distanceToHighlightedCard * 2;
+        var requiredLength = _distanceBetweenCards * (CardArray.Count - 3) + _distanceToSelectedCard * 2;
         var startPos = (pathLength - requiredLength) / 2;
 
-        for (var index = 0; index < _cards.Count; index++)
+        for (var index = 0; index < CardArray.Count; index++)
         {
-            var card = _cards[index];
+            var card = CardArray[index];
             if (card == highlightedCard)
             {
-                card.TargetProgress = startPos + _distanceToHighlightedCard / 2;
+                card.TargetProgress = startPos + _distanceToSelectedCard / 2;
                 card.TargetYPosition = -50f;
                 card.ZIndex = 1000;
-                startPos += _distanceToHighlightedCard * 1.5f;
+                startPos += _distanceToSelectedCard * 1.5f;
             }
             else
             {
@@ -96,12 +99,12 @@ public partial class Cards : Path2D
         AddChild(card);
         card.Area2D.MouseEntered += () => _hoveredCards.Add(card);
         card.Area2D.MouseExited += () => _hoveredCards.Remove(card);
-        _cards.Add(card);
+        CardArray.Add(card);
     }
 
     public void RemoveCard(Card card)
     {
-        _cards.Remove(card);
+        CardArray.Remove(card);
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -110,10 +113,20 @@ public partial class Cards : Path2D
         var highlightedCard = _hoveredCards.MaxBy(card => card.ZIndex);
 
         if (highlightedCard is null) return;
-        foreach (var card in _cards.Where(card =>
+        foreach (var card in CardArray.Where(card =>
                      card.Disabled && card.Component.ComponentType == highlightedCard.Component.ComponentType))
             card.Disabled = false;
         highlightedCard.Disabled = true;
         EmitSignalCardSelected(highlightedCard);
+    }
+
+    public void HighlightCard(Card card)
+    {
+        foreach (var card1 in CardArray)
+        {
+            card1.Sprite.Material = null;
+        }
+
+        card.Sprite.Material = _highlightMaterial;
     }
 }

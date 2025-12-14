@@ -5,6 +5,8 @@
 [resource]
 script = ExtResource("1_st2gl")
 Name = "event_end"
+EventDescription = "As you make your way to the end of your journey, you realize that the real wealth lies not in gold, 
+but in the friends... Just kidding, you made it this far, might as well take a look at the results!"
 NextNodes = Array[Object]([])
 TileMapCoords = Vector2i(12, 11)
 metadata/_custom_type_script = "uid://7etw0fiuq5hq"

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SantaJam25"
-run/main_scene="uid://cj0u1btrjdiuj"
+run/main_scene="uid://dbtoycls710ry"
 config/features=PackedStringArray("4.5", "C#")
 config/icon="res://icon.svg"
 
@@ -19,12 +19,20 @@ config/icon="res://icon.svg"
 
 GlobalGameState="*res://scripts/autoload/GlobalGameState.cs"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=640
+window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
+
 [dotnet]
 
 project/assembly_name="SantaJam25"
 
 [gui]
 
+theme/custom="uid://c4ykait4htwhx"
 theme/custom_font="uid://8htxw5mm8mtq"
 
 [rendering]

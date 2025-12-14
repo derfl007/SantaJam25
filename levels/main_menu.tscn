@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbtoycls710ry"]
+
+[ext_resource type="Script" uid="uid://dc7mg52wohuws" path="res://scripts/levels/MainMenu.cs" id="1_duh7t"]
+[ext_resource type="PackedScene" uid="uid://8uroesmt8xnh" path="res://levels/save_item.tscn" id="2_6ymyu"]
+[ext_resource type="PackedScene" uid="uid://fatfc1icx7yt" path="res://levels/settings.tscn" id="2_7rktv"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_duh7t")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -52.0
+offset_right = 131.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="SavesContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -52.0
+offset_right = 131.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SaveItem" parent="SavesContainer" instance=ExtResource("2_6ymyu")]
+layout_mode = 2
+
+[node name="SaveItem2" parent="SavesContainer" instance=ExtResource("2_6ymyu")]
+layout_mode = 2
+
+[node name="Label" parent="SavesContainer/SaveItem2" index="0"]
+text = "Save Game 2"
+
+[node name="SaveItem3" parent="SavesContainer" instance=ExtResource("2_6ymyu")]
+layout_mode = 2
+
+[node name="Label" parent="SavesContainer/SaveItem3" index="0"]
+text = "Save Game 3"
+
+[node name="Settings" parent="." instance=ExtResource("2_7rktv")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[editable path="SavesContainer/SaveItem"]
+[editable path="SavesContainer/SaveItem2"]
+[editable path="SavesContainer/SaveItem3"]

@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
+using Godot.Collections;
 using SantaJam25.scripts.autoload;
 
 namespace SantaJam25.scripts.util;
@@ -26,5 +29,10 @@ public static class Utils
     public static Vector2I GlobalToMap(this TileMapLayer tileMapLayer, Vector2 globalCoords)
     {
         return tileMapLayer.LocalToMap(tileMapLayer.ToLocal(globalCoords));
+    }
+
+    public static Array<T> ToGodotArray<[MustBeVariant] T>(this IEnumerable<T> enumerable)
+    {
+        return new Array<T>(enumerable);
     }
 }

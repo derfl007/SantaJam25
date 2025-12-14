@@ -7,18 +7,16 @@ public partial class WorldMapPlayer : CharacterBody2D
     [Export]
     private float _movementSpeed = 25.0f;
 
-    private NinePatchRect _ninePatchRect;
+    public NinePatchRect NinePatchRect { get; private set; }
 
     public NavigationAgent2D NavAgent;
+
+    public bool IsMoving { get; set; }
 
     public override void _Ready()
     {
         NavAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
-        _ninePatchRect = GetNode<NinePatchRect>("NinePatchRect");
-
-        NavAgent.NavigationFinished += () => { _ninePatchRect.Visible = true; };
-
-        NavAgent.PathChanged += () => { _ninePatchRect.Visible = false; };
+        NinePatchRect = GetNode<NinePatchRect>("NinePatchRect");
     }
 
     public override void _PhysicsProcess(double delta)

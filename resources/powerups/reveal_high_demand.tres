@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerUp" load_steps=2 format=3 uid="uid://1dwuts2utfe"]
+
+[ext_resource type="Script" uid="uid://1e78oeajvo7e" path="res://scripts/resources/PowerUp.cs" id="1_56g0f"]
+
+[resource]
+script = ExtResource("1_56g0f")
+Name = "Reveal Highest Demand Card"
+Usages = 3
+Cost = 5
+metadata/_custom_type_script = "uid://1e78oeajvo7e"

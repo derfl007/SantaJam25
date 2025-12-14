@@ -24,21 +24,30 @@ filter_clip = true
 
 [node name="Weapon" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_left = -320.0
-offset_top = -160.0
-offset_right = 320.0
-offset_bottom = 160.0
+anchor_left = 0.056
+anchor_top = 0.049000002
+anchor_right = 0.056
+anchor_bottom = 0.049000002
+offset_left = -64.512
+offset_top = -31.752
+offset_right = 63.488
+offset_bottom = 32.248
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_uxn4k")
 
 [node name="HiltTextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -64.0
+grow_horizontal = 0
+size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_xasec")
+expand_mode = 3
+stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="BladeTextureRect" type="TextureRect" parent="."]
@@ -46,9 +55,11 @@ material = SubResource("ShaderMaterial_bmw2d")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 64.0
+size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_uxn4k")
+expand_mode = 3
+stretch_mode = 4
 metadata/_edit_use_anchors_ = true

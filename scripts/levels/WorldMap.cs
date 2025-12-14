@@ -12,7 +12,6 @@ namespace SantaJam25.scripts.levels;
 public partial class WorldMap : Node2D
 {
     private LevelNode _currentNode;
-    private GlobalGameState _globalGameState;
     private CanvasLayer _hud;
 
     private bool _isNodeOverlayOpen;
@@ -24,24 +23,27 @@ public partial class WorldMap : Node2D
 
     private WorldMapPlayer _player;
 
+    private PauseMenu _pauseMenu;
+
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        GlobalGameState.Instance.LoadGame();
+
         _hud = GetNode<CanvasLayer>("%HUD");
 
-        _globalGameState = this.GetGlobalGameState();
+        _hud.GetNode<Label>("%MoneyLabel").Text = GlobalGameState.Instance.CurrentSave.PlayerStats.Money.ToString();
 
-        _hud.GetNode<Label>("%MoneyLabel").Text = _globalGameState.CurrentSave.PlayerStats.Money.ToString();
+        _pauseMenu = GetNode<PauseMenu>("%PauseMenu");
 
-        _globalGameState.SaveUpdate += () =>
+        GlobalGameState.Instance.SaveUpdate += () =>
         {
-            GD.Print($"Current gold: {_globalGameState.CurrentSave.PlayerStats.Money}");
-            _hud.GetNode<Label>("%MoneyLabel").Text = _globalGameState.CurrentSave.PlayerStats.Money.ToString();
+            GD.Print($"Current gold: {GlobalGameState.Instance.CurrentSave.PlayerStats.Money}");
+            _hud.GetNode<Label>("%MoneyLabel").Text = GlobalGameState.Instance.CurrentSave.PlayerStats.Money.ToString();
         };
 
-        _globalGameState.LoadGame();
-
+        GlobalGameState.Instance.LoadGame();
 
         _nodeMapLayer = GetNode<TileMapLayer>("%NodeMapLayer");
         _player = GetNode<WorldMapPlayer>("%WorldMapPlayer");
@@ -51,15 +53,29 @@ public partial class WorldMap : Node2D
         {
             var playerMapPos = _nodeMapLayer.GlobalToMap(_player.GlobalPosition);
             _currentNode = _nodes.First(n => n.TileMapCoords == playerMapPos);
+            var isCompleted = _nodeMapLayer.GetCellTileData(playerMapPos).GetCustomData("completed").AsBool();
+            if (!isCompleted)
+            {
+                _player.NinePatchRect.Visible = true;
+                _player.IsMoving = false;
+            }
+
             GD.Print($"Player stopped at {playerMapPos}, node is {_currentNode.Name}");
+        };
+
+        _player.NavAgent.PathChanged += () =>
+        {
+            _player.NinePatchRect.Visible = false;
+            _player.IsMoving = true;
         };
 
         foreach (var levelNode in _nodes)
         {
-            var isUnlocked = _globalGameState.CurrentSave.UnlockedLevels.Contains(levelNode.Name);
-            var atlasCoords = levelNode.GetAtlasCoords(isUnlocked);
+            var isUnlocked = GlobalGameState.Instance.CurrentSave.UnlockedLevels.Contains(levelNode.Name);
+            var isCompleted = GlobalGameState.Instance.CurrentSave.CompletedLevels.Contains(levelNode.Name);
+            var atlasCoords = levelNode.GetAtlasCoords(isUnlocked, isCompleted);
 
-            _nodeMapLayer.SetCell(levelNode.TileMapCoords, 0, atlasCoords);
+            _nodeMapLayer.SetCell(levelNode.TileMapCoords, 1, atlasCoords);
         }
     }
 
@@ -85,12 +101,15 @@ public partial class WorldMap : Node2D
             case InputEventKey { Pressed: true, Keycode: Key.E }:
                 OpenNodeOverlay();
                 break;
+            case InputEventKey { Pressed: true, Keycode: Key.Escape }:
+                _pauseMenu.Show();
+                break;
         }
     }
 
     public void OpenNodeOverlay()
     {
-        if (_isNodeOverlayOpen) return;
+        if (_isNodeOverlayOpen || _player.IsMoving) return;
         GD.Print($"Open overlay for node: {_currentNode.Name}");
 
         var scenePath = _currentNode.Type switch
@@ -102,6 +121,7 @@ public partial class WorldMap : Node2D
         };
 
         var node = ResourceLoader.Load<PackedScene>(scenePath).Instantiate<NodeOverlay>();
+        if (node is EventNodeOverlay eventNodeOverlay) eventNodeOverlay.Description = _currentNode.EventDescription;
         node.CloseNodeOverlay += OnCloseNodeOverlay;
         _nodeOverlay.AddChild(node);
         _isNodeOverlayOpen = true;
@@ -121,13 +141,17 @@ public partial class WorldMap : Node2D
     private void OnCloseNodeOverlay(bool success)
     {
         if (success)
+        {
+            GlobalGameState.Instance.CurrentSave.CompletedLevels.Add(_currentNode.Name);
+            _nodeMapLayer.SetCell(_currentNode.TileMapCoords, 1, _currentNode.GetAtlasCoords(true, true));
             foreach (var nextNode in _currentNode.NextNodes)
             {
-                _globalGameState.CurrentSave.UnlockedLevels.Add(nextNode.Name);
-                _globalGameState.SaveGame();
-                var atlasCoords = nextNode.GetAtlasCoords(true);
-                _nodeMapLayer.SetCell(nextNode.TileMapCoords, 0, atlasCoords);
+                GlobalGameState.Instance.CurrentSave.UnlockedLevels.Add(nextNode.Name);
+                GlobalGameState.Instance.SaveGame();
+                var atlasCoords = nextNode.GetAtlasCoords(true, false);
+                _nodeMapLayer.SetCell(nextNode.TileMapCoords, 1, atlasCoords);
             }
+        }
 
         CloseNodeOverlay();
     }

@@ -8,6 +8,8 @@
 [resource]
 script = ExtResource("3_qhicv")
 Name = "event_2"
+EventDescription = "Two weapons down, many more to go... But with every weapon you feel demands changing and materials becoming more expensive.
+You're beginning to wonder whether you could be taking advantage of possible flaws in your opponents' strategies"
 NextNodes = Array[Object]([ExtResource("1_3ye4n"), ExtResource("2_ewyjf"), ExtResource("3_ewyjf")])
 TileMapCoords = Vector2i(15, 3)
 metadata/_custom_type_script = "uid://7etw0fiuq5hq"

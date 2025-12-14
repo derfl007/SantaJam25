@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Component" load_steps=6 format=3 uid="uid://16miy41y36nv"]
+
+[ext_resource type="Script" uid="uid://b3xvqi7mjldq4" path="res://scripts/resources/ComponentStats.cs" id="1_86afm"]
+[ext_resource type="Texture2D" uid="uid://bjo8a3714f6qu" path="res://assets/sprites/weapons_spritesheet.png" id="2_esva6"]
+[ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="3_bo0yr"]
+
+[sub_resource type="Resource" id="Resource_86afm"]
+script = ExtResource("1_86afm")
+Cost = 15
+BaseValue = 20
+Demand = 2.0
+metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro5h7"]
+atlas = ExtResource("2_esva6")
+region = Rect2(6, 37, 10, 10)
+
+[resource]
+script = ExtResource("3_bo0yr")
+Name = "Expensive Hilt"
+Description = "A hilt forged from some weird expensive material"
+Texture = SubResource("AtlasTexture_ro5h7")
+ComponentType = 1
+NatureImpactFactor = 1.5
+BaseCost = 15.0
+ComponentStats = SubResource("Resource_86afm")
+metadata/_custom_type_script = "uid://7vh6twlpsabw"

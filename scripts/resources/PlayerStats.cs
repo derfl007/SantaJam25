@@ -16,4 +16,7 @@ public partial class PlayerStats : Resource
 
     [Export]
     public string Name { get; set; }
+
+    [Export]
+    public Texture2D PlayerTexture;
 }

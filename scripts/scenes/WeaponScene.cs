@@ -10,20 +10,16 @@ public partial class WeaponScene : Control
     private Component _blade;
     private TextureRect _bladeTextureRect;
 
-    private GlobalGameState _globalGameState;
     private Component _hilt;
-
     private TextureRect _hiltTextureRect;
-    private Component _quench;
 
+    private Component _quench;
 
     public Weapon Weapon { get; set; } = new();
 
-// Called when the node enters the scene tree for the first time.
+    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        _globalGameState = this.GetGlobalGameState();
-
         _hiltTextureRect = GetNode<TextureRect>("HiltTextureRect");
         _bladeTextureRect = GetNode<TextureRect>("BladeTextureRect");
     }
@@ -33,7 +29,7 @@ public partial class WeaponScene : Control
     {
     }
 
-    public void UpdateTextures()
+    public virtual void UpdateTextures()
     {
         _bladeTextureRect.Texture = Weapon.Blade?.Texture;
         _hiltTextureRect.Texture = Weapon.Hilt?.Texture;

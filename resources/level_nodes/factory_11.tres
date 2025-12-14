@@ -7,6 +7,6 @@
 script = ExtResource("2_kfe2c")
 Name = "factory_11"
 NextNodes = Array[Object]([ExtResource("1_67s3b")])
-TileMapCoords = Vector2i(19, 10)
+TileMapCoords = Vector2i(19, 11)
 Type = 2
 metadata/_custom_type_script = "uid://7etw0fiuq5hq"

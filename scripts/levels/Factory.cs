@@ -6,8 +6,6 @@ using Godot.Collections;
 using SantaJam25.scripts.autoload;
 using SantaJam25.scripts.resources;
 using SantaJam25.scripts.scenes;
-using SantaJam25.scripts.util;
-using Array = Godot.Collections.Array;
 using Range = Godot.Range;
 
 namespace SantaJam25.scripts.levels;
@@ -39,8 +37,6 @@ public partial class Factory : NodeOverlay
 
     private RichTextLabel _costLabel;
 
-    private GlobalGameState _globalGameState;
-
     private bool _isDesignReady;
     private bool _isMinigameReady;
     private bool _isOverviewReady;
@@ -69,10 +65,13 @@ public partial class Factory : NodeOverlay
 
     private WeaponScene _weaponScene;
 
+    private VBoxContainer _powerUpList;
+
+    private float[] _qualityBuffs = [0, 0, 0];
+
 
     public override void _Ready()
     {
-        _globalGameState = this.GetGlobalGameState();
         _weaponScene = GetNode<WeaponScene>("%Weapon");
         _messageLabel = GetNode<RichTextLabel>("%MessageLabel");
         _costLabel = GetNode<RichTextLabel>("%CostLabel");
@@ -91,12 +90,99 @@ public partial class Factory : NodeOverlay
         _minigameContainer = GetNode<Control>("%MinigameContainer");
         _resultsContainer = GetNode<Control>("%ResultsContainer");
 
+        _powerUpList = GetNode<VBoxContainer>("%PowerUpList");
+
+        PopulatePowerUps();
 
         PopulateCards();
 
         _hiltCards.CardSelected += OnCardSelected;
         _bladeCards.CardSelected += OnCardSelected;
         _quenchCards.CardSelected += OnCardSelected;
+    }
+
+    private void PopulatePowerUps()
+    {
+        foreach (var child in _powerUpList.GetChildren())
+        {
+            child.QueueFree();
+        }
+
+        foreach (var powerUp in GlobalGameState.Instance.CurrentSave.PowerUps)
+        {
+            var button = new Button();
+            button.Text = $"{powerUp.Name} ({powerUp.Usages})";
+            _powerUpList.AddChild(button);
+            button.Pressed += () => UsePowerUp(button, powerUp);
+        }
+    }
+
+    private void UsePowerUp(Button button, PowerUp powerUp)
+    {
+        button.QueueFree();
+
+        switch (powerUp.Type)
+        {
+            case PowerUp.PowerUpType.RevealHighDemand when _hiltCardsContainer.Visible:
+                _hiltCards.HighlightCard(_hiltCards.CardArray.MaxBy(card1 => card1.Component.ComponentStats.Demand));
+                break;
+            case PowerUp.PowerUpType.RevealHighDemand when _bladeCardsContainer.Visible:
+                _bladeCards.HighlightCard(_bladeCards.CardArray.MaxBy(card1 => card1.Component.ComponentStats.Demand));
+                break;
+            case PowerUp.PowerUpType.RevealHighDemand when _quenchCardsContainer.Visible:
+                _quenchCards.HighlightCard(
+                    _quenchCards.CardArray.MaxBy(card1 => card1.Component.ComponentStats.Demand));
+                break;
+            case PowerUp.PowerUpType.RevealLowDemand when _hiltCardsContainer.Visible:
+                _hiltCards.HighlightCard(_hiltCards.CardArray.MinBy(card1 => card1.Component.ComponentStats.Demand));
+                break;
+            case PowerUp.PowerUpType.RevealLowDemand when _bladeCardsContainer.Visible:
+                _bladeCards.HighlightCard(_bladeCards.CardArray.MinBy(card1 => card1.Component.ComponentStats.Demand));
+                break;
+            case PowerUp.PowerUpType.RevealLowDemand when _quenchCardsContainer.Visible:
+                _quenchCards.HighlightCard(
+                    _quenchCards.CardArray.MinBy(card1 => card1.Component.ComponentStats.Demand));
+                break;
+            case PowerUp.PowerUpType.RevealHighNatureDebt when _hiltCardsContainer.Visible:
+                _hiltCards.HighlightCard(_hiltCards.CardArray.MaxBy(card1 =>
+                    card1.Component.ComponentStats.NatureDebt));
+                break;
+            case PowerUp.PowerUpType.RevealHighNatureDebt when _bladeCardsContainer.Visible:
+                _bladeCards.HighlightCard(
+                    _bladeCards.CardArray.MaxBy(card1 => card1.Component.ComponentStats.NatureDebt));
+                break;
+            case PowerUp.PowerUpType.RevealHighNatureDebt when _quenchCardsContainer.Visible:
+                _quenchCards.HighlightCard(
+                    _quenchCards.CardArray.MaxBy(card1 => card1.Component.ComponentStats.NatureDebt));
+                break;
+            case PowerUp.PowerUpType.RevealLowNatureDamage when _hiltCardsContainer.Visible:
+                _hiltCards.HighlightCard(_hiltCards.CardArray.MinBy(card1 =>
+                    card1.Component.ComponentStats.NatureDebt));
+                break;
+            case PowerUp.PowerUpType.RevealLowNatureDamage when _bladeCardsContainer.Visible:
+                _bladeCards.HighlightCard(
+                    _bladeCards.CardArray.MinBy(card1 => card1.Component.ComponentStats.NatureDebt));
+                break;
+            case PowerUp.PowerUpType.RevealLowNatureDamage when _quenchCardsContainer.Visible:
+                _quenchCards.HighlightCard(
+                    _quenchCards.CardArray.MinBy(card1 => card1.Component.ComponentStats.NatureDebt));
+                break;
+            case PowerUp.PowerUpType.SabotageQuality:
+                var enemyToSabotage = new RandomNumberGenerator().RandiRange(0, 2);
+                _qualityBuffs[enemyToSabotage] += 0.2f;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        powerUp.Usages -= 1;
+        if (powerUp.Usages <= 0)
+        {
+            GlobalGameState.Instance.CurrentSave.PowerUps.Remove(powerUp);
+        }
+
+        PopulatePowerUps();
+        _powerUpList.Visible = false;
     }
 
     private void OnCardSelected(Card card)
@@ -174,7 +260,7 @@ public partial class Factory : NodeOverlay
 
     private void StartMinigame()
     {
-        if (_globalGameState.CurrentSave.PlayerStats.Money < _weaponScene.Weapon.GetTotalCost())
+        if (GlobalGameState.Instance.CurrentSave.PlayerStats.Money < _weaponScene.Weapon.GetTotalCost())
         {
             ShowMessage("This weapon is too expensive");
             return;
@@ -209,7 +295,7 @@ public partial class Factory : NodeOverlay
 
         _minigameLabel.Text = "Press [color=cyan]E[/color] to see this round's results";
 
-        _globalGameState.CurrentSave.PlayerStats.CurrentWeapon = playerWeapon;
+        GlobalGameState.Instance.CurrentSave.PlayerStats.CurrentWeapon = playerWeapon;
 
 
         _isMinigameReady = false;
@@ -221,10 +307,10 @@ public partial class Factory : NodeOverlay
         GenerateEnemyWeapons();
 
         // get player and enemy stats
-        var playerStats = _globalGameState.CurrentSave.PlayerStats;
-        var enemy1Stats = _globalGameState.CurrentSave.Enemy1Stats;
-        var enemy2Stats = _globalGameState.CurrentSave.Enemy2Stats;
-        var enemy3Stats = _globalGameState.CurrentSave.Enemy3Stats;
+        var playerStats = GlobalGameState.Instance.CurrentSave.PlayerStats;
+        var enemy1Stats = GlobalGameState.Instance.CurrentSave.Enemy1Stats;
+        var enemy2Stats = GlobalGameState.Instance.CurrentSave.Enemy2Stats;
+        var enemy3Stats = GlobalGameState.Instance.CurrentSave.Enemy3Stats;
 
         List<PlayerStats> stats =
         [
@@ -281,19 +367,24 @@ public partial class Factory : NodeOverlay
             r.UpdateValues(resultValues[index]);
         }
 
-        var playerResultWeapon = GetNode<WeaponScene>("%ResultsContainer/Weapon1");
+        var playerResultWeapon = GetNode<WeaponResultScene>("%ResultsContainer/WeaponResult1");
         playerResultWeapon.Weapon = weapons[0];
+        playerResultWeapon.Player = playerStats;
         playerResultWeapon.UpdateTextures();
-        var enemy1ResultWeapon = GetNode<WeaponScene>("%ResultsContainer/Weapon2");
+
+        var enemy1ResultWeapon = GetNode<WeaponResultScene>("%ResultsContainer/WeaponResult2");
         enemy1ResultWeapon.Weapon = weapons[1];
+        enemy1ResultWeapon.Player = enemy1Stats;
         enemy1ResultWeapon.UpdateTextures();
 
-        var enemy2ResultWeapon = GetNode<WeaponScene>("%ResultsContainer/Weapon3");
+        var enemy2ResultWeapon = GetNode<WeaponResultScene>("%ResultsContainer/WeaponResult3");
         enemy2ResultWeapon.Weapon = weapons[2];
+        enemy2ResultWeapon.Player = enemy2Stats;
         enemy2ResultWeapon.UpdateTextures();
 
-        var enemy3ResultWeapon = GetNode<WeaponScene>("%ResultsContainer/Weapon4");
+        var enemy3ResultWeapon = GetNode<WeaponResultScene>("%ResultsContainer/WeaponResult4");
         enemy3ResultWeapon.Weapon = weapons[3];
+        enemy3ResultWeapon.Player = enemy3Stats;
         enemy3ResultWeapon.UpdateTextures();
 
         var winnerName = resultValues.MaxBy(v => v.profit).name;
@@ -309,7 +400,7 @@ public partial class Factory : NodeOverlay
             component.ComponentStats.Cost =
                 (int)Math.Floor(component.BaseCost * (1 + component.ComponentStats.NatureDebt / 100f));
             component.ComponentStats.Demand += (_targetShare - componentSales / (float)totalSales) * _volatility;
-            _globalGameState.CurrentSave.CurrentComponentStats[name] = component.ComponentStats;
+            GlobalGameState.Instance.CurrentSave.CurrentComponentStats[name] = component.ComponentStats;
         }
 
         _minigameContainer.Visible = false;
@@ -330,8 +421,8 @@ public partial class Factory : NodeOverlay
         enemy1Weapon.Blade = _bladeComponents.MinBy(c => c.BaseCost);
         enemy1Weapon.Hilt = _hiltComponents.MinBy(c => c.BaseCost);
         enemy1Weapon.Quench = _quenchComponents.MinBy(c => c.BaseCost);
-        enemy1Weapon.Quality = new RandomNumberGenerator().RandfRange(0.6f, 1f);
-        _globalGameState.CurrentSave.Enemy1Stats.CurrentWeapon = enemy1Weapon;
+        enemy1Weapon.Quality = (int)((new RandomNumberGenerator().RandfRange(0.6f, 1f) - _qualityBuffs[0]) * 10) / 10f;
+        GlobalGameState.Instance.CurrentSave.Enemy1Stats.CurrentWeapon = enemy1Weapon;
 
         GD.Print($"AI 1 Weapon: {enemy1Weapon}");
 
@@ -340,8 +431,9 @@ public partial class Factory : NodeOverlay
         enemy2Weapon.Blade = _bladeComponents.PickRandom();
         enemy2Weapon.Hilt = _hiltComponents.PickRandom();
         enemy2Weapon.Quench = _quenchComponents.PickRandom();
-        enemy2Weapon.Quality = new RandomNumberGenerator().RandfRange(0.6f, 1.2f);
-        _globalGameState.CurrentSave.Enemy2Stats.CurrentWeapon = enemy2Weapon;
+        enemy2Weapon.Quality =
+            (int)((new RandomNumberGenerator().RandfRange(0.6f, 1.2f) - _qualityBuffs[1]) * 10) / 10f;
+        GlobalGameState.Instance.CurrentSave.Enemy2Stats.CurrentWeapon = enemy2Weapon;
 
         GD.Print($"AI 2 Weapon: {enemy2Weapon}");
 
@@ -351,8 +443,9 @@ public partial class Factory : NodeOverlay
         enemy3Weapon.Blade = _bladeComponents.MaxBy(c => c.BaseCost);
         enemy3Weapon.Hilt = _hiltComponents.MaxBy(c => c.BaseCost);
         enemy3Weapon.Quench = _quenchComponents.MaxBy(c => c.BaseCost);
-        enemy3Weapon.Quality = new RandomNumberGenerator().RandfRange(0.8f, 1.2f);
-        _globalGameState.CurrentSave.Enemy3Stats.CurrentWeapon = enemy3Weapon;
+        enemy3Weapon.Quality =
+            (int)((new RandomNumberGenerator().RandfRange(0.8f, 1.2f) - _qualityBuffs[2]) * 10) / 10f;
+        GlobalGameState.Instance.CurrentSave.Enemy3Stats.CurrentWeapon = enemy3Weapon;
 
         GD.Print($"AI 3 Weapon: {enemy3Weapon}");
     }
@@ -361,38 +454,37 @@ public partial class Factory : NodeOverlay
     {
         switch (@event)
         {
-            case InputEventKey { Pressed: true, Keycode: Key.Escape }:
-                // TODO change this to a pause screen, there should be no way to exit back to the map
-                EmitSignalCloseNodeOverlay(false);
-                GetViewport().SetInputAsHandled();
-                break;
+            // case InputEventKey { Pressed: true, Keycode: Key.Escape }:
+            //     // TODO change this to a pause screen, there should be no way to exit back to the map
+            //     EmitSignalCloseNodeOverlay(false);
+            //     break;
             case InputEventKey { Pressed: true, Keycode: Key.E }
                 when _hiltCardsContainer.Visible && _weaponScene.Weapon.Hilt is not null:
                 ShowBladeCardsContainer();
-                GetViewport().SetInputAsHandled();
+                _powerUpList.Visible = true;
                 break;
             case InputEventKey { Pressed: true, Keycode: Key.E }
                 when _bladeCardsContainer.Visible && _weaponScene.Weapon.Blade is not null:
+                _powerUpList.Visible = true;
                 ShowQuenchCardsContainer();
-                GetViewport().SetInputAsHandled();
                 break;
             case InputEventKey { Pressed: true, Keycode: Key.E }
                 when _quenchCardsContainer.Visible && _weaponScene.Weapon.Quench is not null:
                 StartMinigame();
-                GetViewport().SetInputAsHandled();
                 break;
             case InputEventKey { Pressed: true, Keycode: Key.E } when _isMinigameReady:
                 FinishWeapon();
-                GetViewport().SetInputAsHandled();
                 break;
             case InputEventKey { Pressed: true, Keycode: Key.E } when _isOverviewReady && !_resultsContainer.Visible:
                 ShowOverview();
-                GetViewport().SetInputAsHandled();
                 break;
             case InputEventKey { Pressed: true, Keycode: Key.E }:
                 EmitSignalCloseNodeOverlay(true);
-                GetViewport().SetInputAsHandled();
                 break;
+            default:
+                return;
         }
+
+        GetViewport().SetInputAsHandled();
     }
 }

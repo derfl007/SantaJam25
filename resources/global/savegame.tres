@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SaveState" load_steps=8 format=3 uid="uid://b4ay55giusail"]
+
+[ext_resource type="Script" uid="uid://b3xvqi7mjldq4" path="res://scripts/resources/ComponentStats.cs" id="1_uieb7"]
+[ext_resource type="Script" uid="uid://nqgne8vo65mg" path="res://scripts/resources/PlayerStats.cs" id="2_i1tco"]
+[ext_resource type="Script" uid="uid://bw7xslp2sqpro" path="res://scripts/resources/SaveState.cs" id="3_st6lf"]
+
+[sub_resource type="Resource" id="Resource_uieb7"]
+script = ExtResource("2_i1tco")
+Name = "AI 1"
+
+[sub_resource type="Resource" id="Resource_i1tco"]
+script = ExtResource("2_i1tco")
+Name = "AI 2"
+
+[sub_resource type="Resource" id="Resource_st6lf"]
+script = ExtResource("2_i1tco")
+Name = "AI 3"
+
+[sub_resource type="Resource" id="Resource_r8ei3"]
+script = ExtResource("2_i1tco")
+IsPlayer = true
+Name = "Player"
+
+[resource]
+script = ExtResource("3_st6lf")
+UnlockedLevels = Array[String](["event_1"])
+PowerUps = Array[Object]([])
+metadata/_custom_type_script = "uid://bw7xslp2sqpro"

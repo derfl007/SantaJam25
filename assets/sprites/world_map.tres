@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=38 format=3 uid="uid://brdjhfogm4en3"]
+[gd_resource type="TileSet" load_steps=40 format=3 uid="uid://brdjhfogm4en3"]
 
 [ext_resource type="Texture2D" uid="uid://b38uikc4gg0hm" path="res://assets/sprites/roguelikeSheet_transparent.png" id="1_id1bq"]
+[ext_resource type="Texture2D" uid="uid://c0e7xlekfddc1" path="res://assets/sprites/nodes.png" id="2_h2a56"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tdici"]
 vertices = PackedVector2Array(8, 4, -8, 4, -8, -4, 8, -4)
@@ -2938,6 +2939,27 @@ separation = Vector2i(1, 1)
 1:18/0/terrains_peering_bit/top_side = 0
 1:18/0/terrains_peering_bit/top_right_corner = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mf0vu"]
+texture = ExtResource("2_h2a56")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+0:1/0/custom_data_0 = true
+1:1/0 = 0
+1:1/0/custom_data_0 = true
+2:1/0 = 0
+2:1/0/custom_data_0 = true
+0:2/0 = 0
+0:2/0/custom_data_0 = true
+0:2/0/custom_data_1 = true
+1:2/0 = 0
+1:2/0/custom_data_0 = true
+1:2/0/custom_data_1 = true
+2:2/0 = 0
+2:2/0/custom_data_0 = true
+2:2/0/custom_data_1 = true
+
 [resource]
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Dirt"
@@ -2957,4 +2979,7 @@ terrain_set_0/terrain_6/color = Color(0.25, 0.5, 0.40625, 1)
 navigation_layer_0/layers = 1
 custom_data_layer_0/name = "unlocked"
 custom_data_layer_0/type = 1
+custom_data_layer_1/name = "completed"
+custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_kydsf")
+sources/1 = SubResource("TileSetAtlasSource_mf0vu")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PowerUp" load_steps=2 format=3 uid="uid://c03v0riimqrnj"]
+
+[ext_resource type="Script" uid="uid://1e78oeajvo7e" path="res://scripts/resources/PowerUp.cs" id="1_x3uke"]
+
+[resource]
+script = ExtResource("1_x3uke")
+Name = "Sabotage Random Player's Quality"
+Type = 4
+Usages = 3
+Cost = 5
+metadata/_custom_type_script = "uid://1e78oeajvo7e"

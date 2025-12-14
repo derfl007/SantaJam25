@@ -7,6 +7,8 @@
 [resource]
 script = ExtResource("1_eptf1")
 Name = "event_1"
+EventDescription = "This is the beginning of your sword design career. Unfortunately you're not only one trying their hand at providing weapons for the masses. You compete against three other aspiring designers.
+Your goal is simple: Design the best weapons, balance demand, cost and sustainability and make it to the end of your journey..."
 NextNodes = Array[Object]([ExtResource("1_bhayf"), ExtResource("2_gbtq0")])
 TileMapCoords = Vector2i(3, 1)
 metadata/_custom_type_script = "uid://7etw0fiuq5hq"

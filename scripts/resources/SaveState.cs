@@ -3,6 +3,7 @@ using Godot.Collections;
 
 namespace SantaJam25.scripts.resources;
 
+[GlobalClass]
 public partial class SaveState : Resource
 {
     [Export]
@@ -11,11 +12,17 @@ public partial class SaveState : Resource
     [Export]
     public Array<string> UnlockedLevels { get; set; } = ["event_1"];
 
+    [Export]
+    public Array<string> CompletedLevels { get; set; } = [];
+
     /// <summary>
     ///     Maps the current ComponentStats (cost, demand, nature-debt) to the component names
     /// </summary>
     [Export]
     public Dictionary<string, ComponentStats> CurrentComponentStats { get; set; } = new();
+
+    [Export]
+    public Array<PowerUp> PowerUps { get; set; } = [];
 
     [Export]
     public PlayerStats PlayerStats { get; set; } = new() { IsPlayer = true, Name = "Player" };

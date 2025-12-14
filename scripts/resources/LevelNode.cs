@@ -16,6 +16,9 @@ public partial class LevelNode : Resource
     [Export]
     public string Name;
 
+    [Export(PropertyHint.MultilineText)]
+    public string EventDescription;
+
     [Export]
     public Array<LevelNode> NextNodes;
 
@@ -25,16 +28,19 @@ public partial class LevelNode : Resource
     [Export]
     public LevelNodeType Type;
 
-    public Vector2I GetAtlasCoords(bool isUnlocked)
+    public Vector2I GetAtlasCoords(bool isUnlocked, bool isCompleted)
     {
         return Type switch
         {
-            LevelNodeType.Event when !isUnlocked => new Vector2I(50, 30),
-            LevelNodeType.Event => new Vector2I(51, 30),
-            LevelNodeType.Factory when !isUnlocked => new Vector2I(52, 30),
-            LevelNodeType.Factory => new Vector2I(53, 30),
-            LevelNodeType.Shop when !isUnlocked => new Vector2I(54, 30),
-            LevelNodeType.Shop => new Vector2I(55, 30),
+            LevelNodeType.Event when !isUnlocked => new Vector2I(0, 0),
+            LevelNodeType.Event when !isCompleted => new Vector2I(0, 1),
+            LevelNodeType.Event => new Vector2I(0, 2),
+            LevelNodeType.Factory when !isUnlocked => new Vector2I(1, 0),
+            LevelNodeType.Factory when !isCompleted => new Vector2I(1, 1),
+            LevelNodeType.Factory => new Vector2I(1, 2),
+            LevelNodeType.Shop when !isUnlocked => new Vector2I(2, 0),
+            LevelNodeType.Shop when !isCompleted => new Vector2I(2, 1),
+            LevelNodeType.Shop => new Vector2I(2, 2),
             _ => new Vector2I(-1, -1)
         };
     }

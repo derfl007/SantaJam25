@@ -7,7 +7,7 @@ public partial class Card : PathFollow2D
 {
     private bool _disabled;
     private float _lerpProgress;
-    private Sprite2D _sprite;
+    public Sprite2D Sprite;
 
     [Export]
     public float AnimationSpeed = 10f;
@@ -27,14 +27,14 @@ public partial class Card : PathFollow2D
         {
             _disabled = value;
             Area2D.Monitoring = !_disabled;
-            _sprite.Modulate = new Color(Colors.White, _disabled ? 0.5f : 1f);
+            Sprite.Modulate = new Color(Colors.White, _disabled ? 0.5f : 1f);
         }
     }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        _sprite = GetNode<Sprite2D>("Sprite2D");
+        Sprite = GetNode<Sprite2D>("Sprite2D");
         Area2D = GetNode<Area2D>("Sprite2D/Area2D");
 
         if (Component == null) return;
@@ -47,7 +47,7 @@ public partial class Card : PathFollow2D
     public override void _Process(double delta)
     {
         Progress = Mathf.Lerp(Progress, TargetProgress, (float)delta * AnimationSpeed);
-        _sprite.Position =
-            _sprite.Position.Lerp(_sprite.Position with { Y = TargetYPosition }, (float)delta * AnimationSpeed);
+        Sprite.Position =
+            Sprite.Position.Lerp(Sprite.Position with { Y = TargetYPosition }, (float)delta * AnimationSpeed);
     }
 }

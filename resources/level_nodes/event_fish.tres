@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_pjvew")
 Name = "event_fish"
+EventDescription = "Sometimes it's important to simply take a break, sit by the sea and do some fishing."
 NextNodes = null
 TileMapCoords = Vector2i(23, 3)
 metadata/_custom_type_script = "uid://7etw0fiuq5hq"
