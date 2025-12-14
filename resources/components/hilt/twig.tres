@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Component" load_steps=6 format=3 uid="uid://bqf60rmt1p5nq"]
+
+[ext_resource type="Script" uid="uid://b3xvqi7mjldq4" path="res://scripts/resources/ComponentStats.cs" id="1_fjdjy"]
+[ext_resource type="Texture2D" uid="uid://q8wsv1m6qbng" path="res://assets/sprites/hilts.png" id="2_t435a"]
+[ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="3_pdifv"]
+
+[sub_resource type="Resource" id="Resource_tbo2k"]
+script = ExtResource("1_fjdjy")
+Cost = 1
+BaseValue = 2
+Demand = 5.0
+metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjdjy"]
+atlas = ExtResource("2_t435a")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+script = ExtResource("3_pdifv")
+Name = "Twig"
+Description = "Possible the cheapest hilt you've ever seen..."
+Texture = SubResource("AtlasTexture_fjdjy")
+ComponentType = 1
+NatureImpactFactor = 0.5
+BaseCost = 1.0
+ComponentStats = SubResource("Resource_tbo2k")
+metadata/_custom_type_script = "uid://7vh6twlpsabw"

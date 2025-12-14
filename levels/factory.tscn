@@ -1,19 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://dk6v5i7162gb0"]
+[gd_scene load_steps=17 format=3 uid="uid://dk6v5i7162gb0"]
 
 [ext_resource type="Script" uid="uid://bcwan58i1faoh" path="res://scripts/levels/Factory.cs" id="1_crpm8"]
 [ext_resource type="PackedScene" uid="uid://54ukv0iq5m0p" path="res://scenes/weapon.tscn" id="2_ffyh4"]
 [ext_resource type="Resource" uid="uid://ctdqem2odv01g" path="res://resources/components/blade/normal_blade.tres" id="2_uspe2"]
-[ext_resource type="Resource" uid="uid://750lmks88p6n" path="res://resources/components/blade/cheap_blade.tres" id="3_buliu"]
+[ext_resource type="Resource" uid="uid://750lmks88p6n" path="res://resources/components/blade/rusty_blade.tres" id="3_buliu"]
 [ext_resource type="PackedScene" uid="uid://d22fs1n1v0v0s" path="res://scenes/cards.tscn" id="3_nmwqk"]
 [ext_resource type="Resource" uid="uid://bakkf35su8ycg" path="res://resources/components/quench/water.tres" id="4_buliu"]
 [ext_resource type="Texture2D" uid="uid://bo34543jg4fkw" path="res://assets/sprites/minigame_overlay.png" id="4_ffyh4"]
-[ext_resource type="Resource" uid="uid://1db8ucdhcqid" path="res://resources/components/blade/expensive_blade.tres" id="4_i1s1t"]
 [ext_resource type="PackedScene" uid="uid://dughbdsofwmuk" path="res://scenes/card.tscn" id="5_i1s1t"]
 [ext_resource type="PackedScene" uid="uid://glipbb2vfrr5" path="res://scenes/player_results.tscn" id="5_iwnnw"]
-[ext_resource type="Resource" uid="uid://cscwc4ycom4gx" path="res://resources/components/hilt/cheap_hilt.tres" id="5_plas3"]
-[ext_resource type="Resource" uid="uid://b168ffiyuxlo2" path="res://resources/components/hilt/normal_hilt.tres" id="6_uj4xl"]
+[ext_resource type="Resource" uid="uid://0ef7ejgexrcw" path="res://resources/components/hilt/frog.tres" id="5_uj4xl"]
+[ext_resource type="Resource" uid="uid://bqf60rmt1p5nq" path="res://resources/components/hilt/twig.tres" id="6_mvaxd"]
 [ext_resource type="Resource" uid="uid://blkrhykgbj3mp" path="res://resources/components/quench/health_potion.tres" id="7_i1s1t"]
-[ext_resource type="Resource" uid="uid://16miy41y36nv" path="res://resources/components/hilt/expensive_hilt.tres" id="7_mvaxd"]
+[ext_resource type="Resource" uid="uid://dtmyyodybjpxi" path="res://resources/components/hilt/capybara.tres" id="8_jw8ef"]
 [ext_resource type="PackedScene" uid="uid://d1b78tqsugfpo" path="res://scenes/weapon_result.tscn" id="15_mvaxd"]
 
 [sub_resource type="Gradient" id="Gradient_ffyh4"]
@@ -31,8 +30,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_crpm8")
-_bladeComponents = Array[Object]([ExtResource("2_uspe2"), ExtResource("3_buliu"), ExtResource("4_i1s1t")])
-_hiltComponents = Array[Object]([ExtResource("5_plas3"), ExtResource("6_uj4xl"), ExtResource("7_mvaxd")])
+_bladeComponents = Array[Object]([ExtResource("2_uspe2"), ExtResource("3_buliu")])
+_hiltComponents = Array[Object]([ExtResource("8_jw8ef"), ExtResource("5_uj4xl"), ExtResource("6_mvaxd")])
 _quenchComponents = Array[Object]([ExtResource("4_buliu"), ExtResource("7_i1s1t")])
 _cardScene = ExtResource("5_i1s1t")
 
@@ -161,28 +160,6 @@ text = "Select a hilt and press [color=cyan]E[/color] to continue"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MessageLabel" type="RichTextLabel" parent="VBoxContainer/HiltCardsContainer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -272.0
-offset_top = -121.0
-offset_right = 272.0
-offset_bottom = -97.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-theme_override_font_sizes/bold_italics_font_size = 20
-theme_override_font_sizes/italics_font_size = 20
-theme_override_font_sizes/mono_font_size = 20
-bbcode_enabled = true
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="BladeCardsContainer" type="Control" parent="VBoxContainer"]
 unique_name_in_owner = true
 visible = false
@@ -231,29 +208,6 @@ text = "Select a blade and press [color=cyan]E[/color] to continue"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MessageLabel" type="RichTextLabel" parent="VBoxContainer/BladeCardsContainer"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -272.0
-offset_top = -121.0
-offset_right = 272.0
-offset_bottom = -97.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-theme_override_font_sizes/bold_italics_font_size = 20
-theme_override_font_sizes/italics_font_size = 20
-theme_override_font_sizes/mono_font_size = 20
-bbcode_enabled = true
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="QuenchCardsContainer" type="Control" parent="VBoxContainer"]
 unique_name_in_owner = true
 visible = false
@@ -299,28 +253,6 @@ theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
 text = "Select a quench type and press [color=cyan]E[/color] to continue"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MessageLabel" type="RichTextLabel" parent="VBoxContainer/QuenchCardsContainer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -272.0
-offset_top = -121.0
-offset_right = 272.0
-offset_bottom = -97.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-theme_override_font_sizes/bold_italics_font_size = 20
-theme_override_font_sizes/italics_font_size = 20
-theme_override_font_sizes/mono_font_size = 20
-bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 

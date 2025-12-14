@@ -6,6 +6,7 @@ namespace SantaJam25.scripts.levels;
 public partial class Settings : Control
 {
     private OptionButton _windowModeButton;
+    private CheckButton _vSyncModeButton;
     private CheckButton _pixelPerfectButton;
     private Button _saveButton;
 
@@ -16,42 +17,30 @@ public partial class Settings : Control
     public override void _Ready()
     {
         _windowModeButton = GetNode<OptionButton>("%WindowModeButton");
+        _vSyncModeButton = GetNode<CheckButton>("%VSyncModeButton");
         _pixelPerfectButton = GetNode<CheckButton>("%PixelPerfectButton");
 
         _saveButton = GetNode<Button>("%SaveButton");
 
-        _windowModeButton.Selected = DisplayServer.WindowGetMode() switch
-        {
-            DisplayServer.WindowMode.Fullscreen => // fullscreen
-                0,
-            DisplayServer.WindowMode.Maximized => // borderless
-                1,
-            DisplayServer.WindowMode.Windowed => //windowed
-                2,
-            _ => _windowModeButton.Selected
-        };
+        _windowModeButton.Selected = (int)DisplayServer.WindowGetMode();
+
+        _vSyncModeButton.ButtonPressed = (int)DisplayServer.WindowGetVsyncMode() > 0;
 
         _pixelPerfectButton.ButtonPressed =
             GetTree().Root.ContentScaleStretch == Window.ContentScaleStretchEnum.Integer;
 
-        _windowModeButton.ItemSelected += (index =>
+        _windowModeButton.ItemSelected += index =>
         {
-            switch (index)
-            {
-                case 0: // fullscreen
-                    DisplayServer.WindowSetMode(DisplayServer.WindowMode.ExclusiveFullscreen);
-                    DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true);
-                    break;
-                case 1: // borderless
-                    DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized);
-                    DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true);
-                    break;
-                case 2: //windowed
-                    DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
-                    DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false);
-                    break;
-            }
-        });
+            DisplayServer.WindowSetMode((DisplayServer.WindowMode)index);
+            DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, index > 0);
+        };
+
+        _vSyncModeButton.Pressed += () =>
+        {
+            DisplayServer.WindowSetVsyncMode(_vSyncModeButton.ButtonPressed
+                ? DisplayServer.VSyncMode.Enabled
+                : DisplayServer.VSyncMode.Disabled);
+        };
 
         _pixelPerfectButton.Pressed += () =>
         {

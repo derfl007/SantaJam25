@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ir7x5qr2sjm1"]
 
 [ext_resource type="Script" uid="uid://dcaowpqh63x6w" path="res://scripts/scenes/WorldMapPlayer.cs" id="1_7r3d5"]
-[ext_resource type="Texture2D" uid="uid://dkyann45nptfn" path="res://assets/sprites/roguelikeChar_transparent.png" id="1_hr6o4"]
+[ext_resource type="Texture2D" uid="uid://drcp03vsjsmgh" path="res://assets/sprites/sprite_player.tres" id="2_0v5y8"]
 [ext_resource type="Texture2D" uid="uid://b38uikc4gg0hm" path="res://assets/sprites/roguelikeSheet_transparent.png" id="3_0v5y8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hr6o4"]
@@ -13,20 +13,13 @@ _movementSpeed = 50.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
-texture = ExtResource("1_hr6o4")
-region_enabled = true
-region_rect = Rect2(0, 102, 16, 16)
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(0, -6)
-texture = ExtResource("1_hr6o4")
-offset = Vector2(14, 2.43)
-region_enabled = true
-region_rect = Rect2(748, 85, 16, 16)
+texture = ExtResource("2_0v5y8")
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_hr6o4")
+debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 5.0

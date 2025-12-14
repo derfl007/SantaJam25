@@ -41,8 +41,6 @@ public partial class Factory : NodeOverlay
     private bool _isMinigameReady;
     private bool _isOverviewReady;
 
-    private RichTextLabel _messageLabel;
-
     private Control _minigameContainer;
     private RichTextLabel _minigameLabel;
     private Range _minigameRange;
@@ -73,7 +71,6 @@ public partial class Factory : NodeOverlay
     public override void _Ready()
     {
         _weaponScene = GetNode<WeaponScene>("%Weapon");
-        _messageLabel = GetNode<RichTextLabel>("%MessageLabel");
         _costLabel = GetNode<RichTextLabel>("%CostLabel");
         _qualityLabel = GetNode<RichTextLabel>("%QualityLabel");
         _minigameLabel = GetNode<RichTextLabel>("%MinigameLabel");
@@ -260,12 +257,6 @@ public partial class Factory : NodeOverlay
 
     private void StartMinigame()
     {
-        if (GlobalGameState.Instance.CurrentSave.PlayerStats.Money < _weaponScene.Weapon.GetTotalCost())
-        {
-            ShowMessage("This weapon is too expensive");
-            return;
-        }
-
         _isMinigameReady = true;
         _quenchCardsContainer.Visible = false;
         _minigameContainer.Visible = true;
@@ -405,11 +396,6 @@ public partial class Factory : NodeOverlay
 
         _minigameContainer.Visible = false;
         _resultsContainer.Visible = true;
-    }
-
-    private void ShowMessage(string message)
-    {
-        _messageLabel.Text = $"[color=orange]{message}[/color]";
     }
 
     private void GenerateEnemyWeapons()

@@ -29,7 +29,8 @@ public partial class GlobalGameState : Node
         {
             GD.Print("Save file not found, creating...");
             var templateSave = ResourceLoader.Load<SaveState>(TemplatePath);
-            ResourceSaver.Save(templateSave, SavePath);
+            ResourceSaver.Save(templateSave, SavePath,
+                ResourceSaver.SaverFlags.ChangePath | ResourceSaver.SaverFlags.ReplaceSubresourcePaths);
         }
 
         CurrentSave = ResourceLoader.Load<SaveState>(SavePath);

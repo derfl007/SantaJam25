@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8075n81uvjpm"]
+[gd_scene load_steps=8 format=3 uid="uid://b8075n81uvjpm"]
 
 [ext_resource type="Texture2D" uid="uid://b38uikc4gg0hm" path="res://assets/sprites/roguelikeSheet_transparent.png" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://bwb5xtmp67vny" path="res://assets/sprites/sprite_enemy1.tres" id="2_6fi6k"]
+[ext_resource type="Texture2D" uid="uid://hmd7c3vje5vc" path="res://assets/sprites/sprite_enemy2.tres" id="3_uo2fv"]
+[ext_resource type="Texture2D" uid="uid://co6x331ybqv0p" path="res://assets/sprites/sprite_enemy3.tres" id="4_047uy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oo0fn"]
 texture = ExtResource("1_ahhtf")
@@ -38,10 +41,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -120.0
-offset_top = 8.0
-offset_right = -93.0
-offset_bottom = 23.0
+offset_left = -192.0
+offset_top = 24.0
+offset_right = -152.0
+offset_bottom = 39.0
 grow_horizontal = 0
 scale = Vector2(4, 4)
 theme_override_styles/panel = SubResource("StyleBoxTexture_oo0fn")
@@ -60,5 +63,81 @@ stretch_mode = 5
 [node name="MoneyLabel" type="Label" parent="Control/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "0"
 label_settings = SubResource("LabelSettings_6fi6k")
+horizontal_alignment = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_top = 105.0
+offset_right = -152.0
+offset_bottom = 142.75
+grow_horizontal = 0
+scale = Vector2(4, 4)
+theme_override_styles/panel = SubResource("StyleBoxTexture_oo0fn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer2/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+texture = ExtResource("2_6fi6k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoneyLabelEnemy1" type="Label" parent="Control/PanelContainer2/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_6fi6k")
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+texture = ExtResource("3_uo2fv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoneyLabelEnemy2" type="Label" parent="Control/PanelContainer2/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_6fi6k")
+horizontal_alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer2/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+texture = ExtResource("4_047uy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoneyLabelEnemy3" type="Label" parent="Control/PanelContainer2/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_6fi6k")
+horizontal_alignment = 2

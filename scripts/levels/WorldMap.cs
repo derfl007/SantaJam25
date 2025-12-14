@@ -41,12 +41,19 @@ public partial class WorldMap : Node2D
         {
             GD.Print($"Current gold: {GlobalGameState.Instance.CurrentSave.PlayerStats.Money}");
             _hud.GetNode<Label>("%MoneyLabel").Text = GlobalGameState.Instance.CurrentSave.PlayerStats.Money.ToString();
+            _hud.GetNode<Label>("%MoneyLabelEnemy1").Text =
+                GlobalGameState.Instance.CurrentSave.Enemy1Stats.Money.ToString();
+            _hud.GetNode<Label>("%MoneyLabelEnemy2").Text =
+                GlobalGameState.Instance.CurrentSave.Enemy2Stats.Money.ToString();
+            _hud.GetNode<Label>("%MoneyLabelEnemy3").Text =
+                GlobalGameState.Instance.CurrentSave.Enemy3Stats.Money.ToString();
         };
 
         GlobalGameState.Instance.LoadGame();
 
         _nodeMapLayer = GetNode<TileMapLayer>("%NodeMapLayer");
         _player = GetNode<WorldMapPlayer>("%WorldMapPlayer");
+        _player.Position = GlobalGameState.Instance.CurrentSave.PlayerPosition;
         _nodeOverlay = GetNode<CanvasLayer>("%NodeOverlay");
 
         _player.NavAgent.NavigationFinished += () =>
@@ -59,6 +66,8 @@ public partial class WorldMap : Node2D
                 _player.NinePatchRect.Visible = true;
                 _player.IsMoving = false;
             }
+
+            GlobalGameState.Instance.CurrentSave.PlayerPosition = _player.Position;
 
             GD.Print($"Player stopped at {playerMapPos}, node is {_currentNode.Name}");
         };

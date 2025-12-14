@@ -1,28 +1,41 @@
-[gd_resource type="Resource" script_class="SaveState" load_steps=8 format=3 uid="uid://b4ay55giusail"]
+[gd_resource type="Resource" script_class="SaveState" load_steps=12 format=3 uid="uid://b4ay55giusail"]
 
 [ext_resource type="Script" uid="uid://b3xvqi7mjldq4" path="res://scripts/resources/ComponentStats.cs" id="1_uieb7"]
+[ext_resource type="Texture2D" uid="uid://bwb5xtmp67vny" path="res://assets/sprites/sprite_enemy1.tres" id="2_gl86f"]
 [ext_resource type="Script" uid="uid://nqgne8vo65mg" path="res://scripts/resources/PlayerStats.cs" id="2_i1tco"]
+[ext_resource type="Texture2D" uid="uid://co6x331ybqv0p" path="res://assets/sprites/sprite_enemy3.tres" id="3_i1tco"]
 [ext_resource type="Script" uid="uid://bw7xslp2sqpro" path="res://scripts/resources/SaveState.cs" id="3_st6lf"]
+[ext_resource type="Texture2D" uid="uid://hmd7c3vje5vc" path="res://assets/sprites/sprite_enemy2.tres" id="4_p8ra8"]
+[ext_resource type="Texture2D" uid="uid://drcp03vsjsmgh" path="res://assets/sprites/sprite_player.tres" id="6_f1y8i"]
 
-[sub_resource type="Resource" id="Resource_uieb7"]
+[sub_resource type="Resource" id="Resource_v6yxc"]
 script = ExtResource("2_i1tco")
-Name = "AI 1"
+Name = "DragonBoi"
+PlayerTexture = ExtResource("2_gl86f")
 
-[sub_resource type="Resource" id="Resource_i1tco"]
+[sub_resource type="Resource" id="Resource_dobpj"]
 script = ExtResource("2_i1tco")
-Name = "AI 2"
+Name = "Grimnar"
+PlayerTexture = ExtResource("4_p8ra8")
 
-[sub_resource type="Resource" id="Resource_st6lf"]
+[sub_resource type="Resource" id="Resource_abe0f"]
 script = ExtResource("2_i1tco")
-Name = "AI 3"
+Name = "Goblin"
+PlayerTexture = ExtResource("3_i1tco")
 
-[sub_resource type="Resource" id="Resource_r8ei3"]
+[sub_resource type="Resource" id="Resource_6fxue"]
 script = ExtResource("2_i1tco")
 IsPlayer = true
-Name = "Player"
+Name = "Walknut"
+PlayerTexture = ExtResource("6_f1y8i")
 
 [resource]
 script = ExtResource("3_st6lf")
 UnlockedLevels = Array[String](["event_1"])
+CompletedLevels = null
 PowerUps = Array[Object]([])
+PlayerStats = SubResource("Resource_6fxue")
+Enemy1Stats = SubResource("Resource_v6yxc")
+Enemy2Stats = SubResource("Resource_dobpj")
+Enemy3Stats = SubResource("Resource_abe0f")
 metadata/_custom_type_script = "uid://bw7xslp2sqpro"

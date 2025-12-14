@@ -35,4 +35,7 @@ public partial class SaveState : Resource
 
     [Export]
     public PlayerStats Enemy3Stats { get; set; } = new() { Name = "AI 3" };
+
+    [Export]
+    public Vector2 PlayerPosition { get; set; } = new(24, 24);
 }

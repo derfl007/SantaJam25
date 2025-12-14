@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://dxx6bff8dac08"]
 
 [ext_resource type="Script" uid="uid://bxq2b27kkg2xq" path="res://scripts/levels/Shop.cs" id="1_g63gd"]
-[ext_resource type="Resource" uid="uid://1dwuts2utfe" path="res://resources/powerups/reveal_high_demand.tres" id="2_u4spd"]
-[ext_resource type="Resource" uid="uid://cktapcv5u8tum" path="res://resources/powerups/reveal_high_nature_damage.tres" id="3_rws83"]
-[ext_resource type="Resource" uid="uid://puppvcch0yra" path="res://resources/powerups/reveal_low_demand.tres" id="4_mafhd"]
-[ext_resource type="Resource" uid="uid://d0f51akvkibm5" path="res://resources/powerups/reveal_low_nature_damage.tres" id="5_jmoi4"]
-[ext_resource type="Resource" uid="uid://c03v0riimqrnj" path="res://resources/powerups/sabotage_quality.tres" id="6_687hx"]
+[ext_resource type="Resource" uid="uid://1dwuts2utfe" path="res://resources/powerups/reveal_high_demand.tres" id="3_rws83"]
+[ext_resource type="Resource" uid="uid://cktapcv5u8tum" path="res://resources/powerups/reveal_high_nature_damage.tres" id="4_mafhd"]
+[ext_resource type="Resource" uid="uid://puppvcch0yra" path="res://resources/powerups/reveal_low_demand.tres" id="5_jmoi4"]
+[ext_resource type="Resource" uid="uid://d0f51akvkibm5" path="res://resources/powerups/reveal_low_nature_damage.tres" id="6_687hx"]
+[ext_resource type="Resource" uid="uid://c03v0riimqrnj" path="res://resources/powerups/sabotage_quality.tres" id="7_hvfp7"]
 [ext_resource type="PackedScene" uid="uid://h1fje22r4f6r" path="res://scenes/shop_item.tscn" id="7_u4spd"]
 [ext_resource type="Theme" uid="uid://c4ykait4htwhx" path="res://resources/theme.tres" id="8_rws83"]
 
@@ -65,7 +65,7 @@ grow_vertical = 2
 
 [node name="ShopItem" parent="ShopItemList" instance=ExtResource("7_u4spd")]
 layout_mode = 2
-PowerUp = ExtResource("6_687hx")
+PowerUp = ExtResource("3_rws83")
 
 [node name="ShopItem2" parent="ShopItemList" instance=ExtResource("7_u4spd")]
 layout_mode = 2
@@ -73,15 +73,15 @@ PowerUp = ExtResource("4_mafhd")
 
 [node name="ShopItem3" parent="ShopItemList" instance=ExtResource("7_u4spd")]
 layout_mode = 2
-PowerUp = ExtResource("2_u4spd")
+PowerUp = ExtResource("5_jmoi4")
 
 [node name="ShopItem4" parent="ShopItemList" instance=ExtResource("7_u4spd")]
 layout_mode = 2
-PowerUp = ExtResource("5_jmoi4")
+PowerUp = ExtResource("6_687hx")
 
 [node name="ShopItem5" parent="ShopItemList" instance=ExtResource("7_u4spd")]
 layout_mode = 2
-PowerUp = ExtResource("3_rws83")
+PowerUp = ExtResource("7_hvfp7")
 
 [node name="CostLabel" type="RichTextLabel" parent="."]
 unique_name_in_owner = true

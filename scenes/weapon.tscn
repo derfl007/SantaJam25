@@ -1,13 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://54ukv0iq5m0p"]
+[gd_scene load_steps=8 format=3 uid="uid://54ukv0iq5m0p"]
 
 [ext_resource type="Script" uid="uid://cweufpo0lcjrp" path="res://scripts/scenes/WeaponScene.cs" id="1_uxn4k"]
-[ext_resource type="Texture2D" uid="uid://bjo8a3714f6qu" path="res://assets/sprites/weapons_spritesheet.png" id="2_uxn4k"]
+[ext_resource type="Texture2D" uid="uid://dmsna30c70snf" path="res://assets/sprites/blades.png" id="3_8fp1k"]
 [ext_resource type="Shader" uid="uid://cjdagun5efsac" path="res://resources/shaders/weapon.gdshader" id="3_bmw2d"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xasec"]
-atlas = ExtResource("2_uxn4k")
-region = Rect2(6, 88, 10, 10)
-filter_clip = true
+[ext_resource type="Texture2D" uid="uid://q8wsv1m6qbng" path="res://assets/sprites/hilts.png" id="4_cjr6y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bmw2d"]
 shader = ExtResource("3_bmw2d")
@@ -18,8 +14,13 @@ shader_parameter/offset = 1.0
 shader_parameter/pixelate_line = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxn4k"]
-atlas = ExtResource("2_uxn4k")
-region = Rect2(17, 88, 10, 10)
+atlas = ExtResource("3_8fp1k")
+region = Rect2(0, 0, 32, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xasec"]
+atlas = ExtResource("4_cjr6y")
+region = Rect2(32, 32, 32, 32)
 filter_clip = true
 
 [node name="Weapon" type="Control"]
@@ -28,13 +29,27 @@ anchor_left = 0.056
 anchor_top = 0.049000002
 anchor_right = 0.056
 anchor_bottom = 0.049000002
-offset_left = -64.512
-offset_top = -31.752
-offset_right = 63.488
-offset_bottom = 32.248
+offset_left = -63.68
+offset_top = -31.36
+offset_right = 64.32
+offset_bottom = 32.64
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uxn4k")
+
+[node name="BladeTextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_bmw2d")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.375
+anchor_right = 0.375
+anchor_bottom = 1.0
+offset_right = 64.0
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_uxn4k")
+expand_mode = 3
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="HiltTextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -46,20 +61,6 @@ offset_left = -64.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_xasec")
-expand_mode = 3
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
-
-[node name="BladeTextureRect" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_bmw2d")
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_right = 64.0
-size_flags_horizontal = 3
-texture = SubResource("AtlasTexture_uxn4k")
 expand_mode = 3
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
