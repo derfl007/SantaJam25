@@ -6,10 +6,10 @@
 
 [sub_resource type="Resource" id="Resource_0vlv8"]
 script = ExtResource("1_pbtyo")
-Cost = 10
-BaseValue = 20
+Cost = 75.0
+BaseValue = 150
 Demand = 5.0
-NatureDebt = 20
+NatureDebt = 0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbtyo"]
@@ -23,6 +23,6 @@ Name = "Eye Of Zucchero Blade"
 Description = "A Blade enchanted with the Eye Of Zucchero (my cat)"
 Texture = SubResource("AtlasTexture_pbtyo")
 MaxLifetimeSales = 500.0
-BaseCost = 10.0
+BaseCost = 75.0
 ComponentStats = SubResource("Resource_0vlv8")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

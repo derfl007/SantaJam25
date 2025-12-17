@@ -6,10 +6,10 @@
 
 [sub_resource type="Resource" id="Resource_0vlv8"]
 script = ExtResource("1_mbayx")
-Cost = 10
-BaseValue = 20
+Cost = 25
+BaseValue = 50
 Demand = 5.0
-NatureDebt = 20
+NatureDebt = 0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbayx"]
@@ -24,6 +24,6 @@ Description = "Is it a cannon, a gun or a blade?
 Yes."
 Texture = SubResource("AtlasTexture_mbayx")
 MaxLifetimeSales = 500.0
-BaseCost = 10.0
+BaseCost = 25.0
 ComponentStats = SubResource("Resource_0vlv8")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

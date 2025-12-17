@@ -6,10 +6,10 @@
 
 [sub_resource type="Resource" id="Resource_0vlv8"]
 script = ExtResource("1_apf6y")
-Cost = 10
-BaseValue = 20
+Cost = 25
+BaseValue = 50
 Demand = 5.0
-NatureDebt = 20
+NatureDebt = 0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_apf6y"]
@@ -23,6 +23,6 @@ Name = "Element Blade"
 Description = "A blade forged from all of the elements at the same time"
 Texture = SubResource("AtlasTexture_apf6y")
 MaxLifetimeSales = 500.0
-BaseCost = 10.0
+BaseCost = 25.0
 ComponentStats = SubResource("Resource_0vlv8")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

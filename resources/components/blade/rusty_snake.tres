@@ -9,7 +9,7 @@ script = ExtResource("1_xcptg")
 Cost = 10
 BaseValue = 20
 Demand = 5.0
-NatureDebt = 20
+NatureDebt = 0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xcptg"]
@@ -22,7 +22,7 @@ script = ExtResource("3_dajjs")
 Name = "Rusty Snake Blade"
 Description = "A blade that has rusted so much that it looks like a snake"
 Texture = SubResource("AtlasTexture_xcptg")
-MaxLifetimeSales = 500.0
+MaxLifetimeSales = 4000.0
 BaseCost = 10.0
 ComponentStats = SubResource("Resource_0vlv8")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"
