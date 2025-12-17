@@ -40,6 +40,7 @@ public partial class Factory : NodeOverlay
     private bool _isDesignReady;
     private bool _isMinigameReady;
     private bool _isOverviewReady;
+    private bool _isCompleted;
 
     private Control _minigameContainer;
     private RichTextLabel _minigameLabel;
@@ -56,10 +57,10 @@ public partial class Factory : NodeOverlay
     private Control _resultsContainer;
 
     [Export]
-    private float _targetShare = 0.2f;
+    private float _targetShare = 0.3f;
 
     [Export]
-    private float _volatility = 2f;
+    private float _volatility = 3f;
 
     private WeaponScene _weaponScene;
 
@@ -206,21 +207,21 @@ public partial class Factory : NodeOverlay
 
     private void PopulateCards()
     {
-        foreach (var bladeComponent in _bladeComponents)
+        foreach (var bladeComponent in _bladeComponents.Where(card => card.ComponentStats.NatureDebt < 100))
         {
             var card = _cardScene.Instantiate<Card>();
             card.Component = bladeComponent;
             _bladeCards.AddCard(card);
         }
 
-        foreach (var hiltComponent in _hiltComponents)
+        foreach (var hiltComponent in _hiltComponents.Where(card => card.ComponentStats.NatureDebt < 100))
         {
             var card = _cardScene.Instantiate<Card>();
             card.Component = hiltComponent;
             _hiltCards.AddCard(card);
         }
 
-        foreach (var quenchComponent in _quenchComponents)
+        foreach (var quenchComponent in _quenchComponents.Where(card => card.ComponentStats.NatureDebt < 100))
         {
             var card = _cardScene.Instantiate<Card>();
             card.Component = quenchComponent;
@@ -393,7 +394,9 @@ public partial class Factory : NodeOverlay
             GD.PrintT(component.Name, component.ComponentStats.NatureDebt, component.ComponentStats.Cost,
                 component.ComponentStats.Demand, componentSales, componentSales / (float)totalSales);
 
-            component.ComponentStats.NatureDebt += (int)Math.Floor(componentSales / component.MaxLifetimeSales * 100);
+            component.ComponentStats.NatureDebt = Math.Max(100,
+                component.ComponentStats.NatureDebt +
+                (int)Math.Floor(componentSales / component.MaxLifetimeSales * 100));
 
             component.ComponentStats.Cost =
                 (int)Math.Floor(component.BaseCost * (1 + component.ComponentStats.NatureDebt / 100f));
@@ -412,6 +415,7 @@ public partial class Factory : NodeOverlay
 
         _minigameContainer.Visible = false;
         _resultsContainer.Visible = true;
+        _isCompleted = true;
     }
 
     private void GenerateEnemyWeapons()
@@ -428,11 +432,11 @@ public partial class Factory : NodeOverlay
 
         GD.Print($"AI 1 Weapon: {enemy1Weapon}");
 
-        // enemy 2: random
+        // enemy 2: max demand
         var enemy2Weapon = new Weapon();
-        enemy2Weapon.Blade = _bladeComponents.PickRandom();
-        enemy2Weapon.Hilt = _hiltComponents.PickRandom();
-        enemy2Weapon.Quench = _quenchComponents.PickRandom();
+        enemy2Weapon.Blade = _bladeComponents.MaxBy(c => c.ComponentStats.Demand);
+        enemy2Weapon.Hilt = _hiltComponents.MaxBy(c => c.ComponentStats.Demand);
+        enemy2Weapon.Quench = _quenchComponents.MaxBy(c => c.ComponentStats.Demand);
         enemy2Weapon.Quality =
             (int)((new RandomNumberGenerator().RandfRange(0.6f, 1.2f) - _qualityBuffs[1]) * 10) / 10f;
         GlobalGameState.Instance.CurrentSave.Enemy2Stats.CurrentWeapon = enemy2Weapon;
@@ -480,7 +484,7 @@ public partial class Factory : NodeOverlay
             case InputEventKey { Pressed: true, Keycode: Key.E } when _isOverviewReady && !_resultsContainer.Visible:
                 ShowOverview();
                 break;
-            case InputEventKey { Pressed: true, Keycode: Key.E }:
+            case InputEventKey { Pressed: true, Keycode: Key.E } when _isCompleted:
                 EmitSignalCloseNodeOverlay(true);
                 break;
             default:
