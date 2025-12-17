@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Component" load_steps=6 format=3 uid="uid://dptklg77jkrc5"]
+
+[ext_resource type="Script" uid="uid://b3xvqi7mjldq4" path="res://scripts/resources/ComponentStats.cs" id="1_5w3h0"]
+[ext_resource type="Texture2D" uid="uid://q8wsv1m6qbng" path="res://assets/sprites/hilts.png" id="2_3jlii"]
+[ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="3_s0v8i"]
+
+[sub_resource type="Resource" id="Resource_tbo2k"]
+script = ExtResource("1_5w3h0")
+Cost = 15
+BaseValue = 30
+Demand = 5.0
+metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w3h0"]
+atlas = ExtResource("2_3jlii")
+region = Rect2(96, 32, 32, 32)
+
+[resource]
+script = ExtResource("3_s0v8i")
+Name = "Crin Hilt"
+Description = "A capybara. With a bird on it"
+Texture = SubResource("AtlasTexture_5w3h0")
+ComponentType = 1
+MaxLifetimeSales = 500.0
+BaseCost = 15.0
+ComponentStats = SubResource("Resource_tbo2k")
+metadata/_custom_type_script = "uid://7vh6twlpsabw"

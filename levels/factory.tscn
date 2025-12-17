@@ -1,19 +1,37 @@
-[gd_scene load_steps=17 format=3 uid="uid://dk6v5i7162gb0"]
+[gd_scene load_steps=35 format=3 uid="uid://dk6v5i7162gb0"]
 
 [ext_resource type="Script" uid="uid://bcwan58i1faoh" path="res://scripts/levels/Factory.cs" id="1_crpm8"]
 [ext_resource type="PackedScene" uid="uid://54ukv0iq5m0p" path="res://scenes/weapon.tscn" id="2_ffyh4"]
-[ext_resource type="Resource" uid="uid://ctdqem2odv01g" path="res://resources/components/blade/normal_blade.tres" id="2_uspe2"]
-[ext_resource type="Resource" uid="uid://750lmks88p6n" path="res://resources/components/blade/rusty_blade.tres" id="3_buliu"]
+[ext_resource type="Resource" uid="uid://dhdtw62spmbrp" path="res://resources/components/blade/bandaged_boltbound.tres" id="2_sntrn"]
+[ext_resource type="Resource" uid="uid://bnx5x540mvch1" path="res://resources/components/blade/broadaxe.tres" id="3_m37j2"]
 [ext_resource type="PackedScene" uid="uid://d22fs1n1v0v0s" path="res://scenes/cards.tscn" id="3_nmwqk"]
 [ext_resource type="Resource" uid="uid://bakkf35su8ycg" path="res://resources/components/quench/water.tres" id="4_buliu"]
 [ext_resource type="Texture2D" uid="uid://bo34543jg4fkw" path="res://assets/sprites/minigame_overlay.png" id="4_ffyh4"]
+[ext_resource type="Resource" uid="uid://b5mld1lmbv2kd" path="res://resources/components/blade/broken_greatsword.tres" id="4_x8phn"]
+[ext_resource type="Resource" uid="uid://my4sn103wgib" path="res://resources/components/blade/broken_straightsword.tres" id="5_37f84"]
 [ext_resource type="PackedScene" uid="uid://dughbdsofwmuk" path="res://scenes/card.tscn" id="5_i1s1t"]
 [ext_resource type="PackedScene" uid="uid://glipbb2vfrr5" path="res://scenes/player_results.tscn" id="5_iwnnw"]
 [ext_resource type="Resource" uid="uid://0ef7ejgexrcw" path="res://resources/components/hilt/frog.tres" id="5_uj4xl"]
+[ext_resource type="Resource" uid="uid://lsaxvxogkfwc" path="res://resources/components/blade/cacti.tres" id="6_m4u2l"]
 [ext_resource type="Resource" uid="uid://bqf60rmt1p5nq" path="res://resources/components/hilt/twig.tres" id="6_mvaxd"]
+[ext_resource type="Resource" uid="uid://bmrh63uspcpwf" path="res://resources/components/blade/cannongun.tres" id="7_4vn33"]
 [ext_resource type="Resource" uid="uid://blkrhykgbj3mp" path="res://resources/components/quench/health_potion.tres" id="7_i1s1t"]
 [ext_resource type="Resource" uid="uid://dtmyyodybjpxi" path="res://resources/components/hilt/capybara.tres" id="8_jw8ef"]
+[ext_resource type="Resource" uid="uid://bacw4p2jubutp" path="res://resources/components/blade/cleave_ripper.tres" id="8_sbpj8"]
+[ext_resource type="Resource" uid="uid://dw4vcwo8xejsk" path="res://resources/components/blade/clip.tres" id="9_ev02v"]
+[ext_resource type="Resource" uid="uid://bh5ffvapc04er" path="res://resources/components/blade/crystal.tres" id="10_07ei3"]
+[ext_resource type="Resource" uid="uid://cyjcy4w7fdiqx" path="res://resources/components/blade/element.tres" id="11_a2mxd"]
+[ext_resource type="Resource" uid="uid://vrq132lyjhst" path="res://resources/components/blade/eye_of_zucc.tres" id="12_im40b"]
+[ext_resource type="Resource" uid="uid://htsajs1ac003" path="res://resources/components/blade/hook.tres" id="13_8lab4"]
+[ext_resource type="Resource" uid="uid://b3wuqmqn8wcvw" path="res://resources/components/blade/mould.tres" id="14_lm76d"]
+[ext_resource type="Resource" uid="uid://cmnfxd7rdjra3" path="res://resources/components/blade/rail.tres" id="15_e3nox"]
 [ext_resource type="PackedScene" uid="uid://d1b78tqsugfpo" path="res://scenes/weapon_result.tscn" id="15_mvaxd"]
+[ext_resource type="Resource" uid="uid://8iy2vkk0j33b" path="res://resources/components/blade/rifle.tres" id="16_7fmsg"]
+[ext_resource type="Resource" uid="uid://js7ntsymckku" path="res://resources/components/blade/rusty_broadsword.tres" id="17_gyj0j"]
+[ext_resource type="Resource" uid="uid://ctcjwopn54sev" path="res://resources/components/blade/rusty_snake.tres" id="18_j0v00"]
+[ext_resource type="Resource" uid="uid://cre24w0qoquft" path="res://resources/components/blade/saw.tres" id="19_7rwvi"]
+[ext_resource type="Resource" uid="uid://mbcj65dyo4mc" path="res://resources/components/blade/skullspike.tres" id="20_le56x"]
+[ext_resource type="Resource" uid="uid://b3kcdhx5lisrd" path="res://resources/components/blade/twisted.tres" id="21_xv0yw"]
 
 [sub_resource type="Gradient" id="Gradient_ffyh4"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -30,7 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_crpm8")
-_bladeComponents = Array[Object]([ExtResource("2_uspe2"), ExtResource("3_buliu")])
+_bladeComponents = Array[Object]([ExtResource("2_sntrn"), ExtResource("3_m37j2"), ExtResource("4_x8phn"), ExtResource("5_37f84"), ExtResource("6_m4u2l"), ExtResource("7_4vn33"), ExtResource("8_sbpj8"), ExtResource("9_ev02v"), ExtResource("10_07ei3"), ExtResource("11_a2mxd"), ExtResource("12_im40b"), ExtResource("13_8lab4"), ExtResource("14_lm76d"), ExtResource("15_e3nox"), ExtResource("16_7fmsg"), ExtResource("17_gyj0j"), ExtResource("18_j0v00"), ExtResource("19_7rwvi"), ExtResource("20_le56x"), ExtResource("21_xv0yw")])
 _hiltComponents = Array[Object]([ExtResource("8_jw8ef"), ExtResource("5_uj4xl"), ExtResource("6_mvaxd")])
 _quenchComponents = Array[Object]([ExtResource("4_buliu"), ExtResource("7_i1s1t")])
 _cardScene = ExtResource("5_i1s1t")
@@ -130,9 +148,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -448.0
+offset_left = -608.0
 offset_top = -72.0
-offset_right = 448.0
+offset_right = 608.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -174,9 +192,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -448.0
+offset_left = -608.0
 offset_top = -72.0
-offset_right = 448.0
+offset_right = 608.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -222,9 +240,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -448.0
+offset_left = -608.0
 offset_top = -72.0
-offset_right = 448.0
+offset_right = 608.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Component" load_steps=6 format=3 uid="uid://b0g3d3mjs4m46"]
+
+[ext_resource type="Script" uid="uid://b3xvqi7mjldq4" path="res://scripts/resources/ComponentStats.cs" id="1_i5d2j"]
+[ext_resource type="Texture2D" uid="uid://q8wsv1m6qbng" path="res://assets/sprites/hilts.png" id="2_hxchs"]
+[ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="3_7rsfd"]
+
+[sub_resource type="Resource" id="Resource_tbo2k"]
+script = ExtResource("1_i5d2j")
+Cost = 10
+BaseValue = 30
+Demand = 5.0
+metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5d2j"]
+atlas = ExtResource("2_hxchs")
+region = Rect2(0, 32, 32, 32)
+
+[resource]
+script = ExtResource("3_7rsfd")
+Name = "Pallurho Star Hilt"
+Description = "A capybara. With a bird on it"
+Texture = SubResource("AtlasTexture_i5d2j")
+ComponentType = 1
+MaxLifetimeSales = 500.0
+BaseCost = 15.0
+ComponentStats = SubResource("Resource_tbo2k")
+metadata/_custom_type_script = "uid://7vh6twlpsabw"

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Component" load_steps=6 format=3 uid="uid://ctaqek5u804wg"]
+
+[ext_resource type="Script" uid="uid://b3xvqi7mjldq4" path="res://scripts/resources/ComponentStats.cs" id="1_kptxx"]
+[ext_resource type="Texture2D" uid="uid://q8wsv1m6qbng" path="res://assets/sprites/hilts.png" id="2_reyvy"]
+[ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="3_okaqk"]
+
+[sub_resource type="Resource" id="Resource_tbo2k"]
+script = ExtResource("1_kptxx")
+Cost = 15
+BaseValue = 30
+Demand = 5.0
+metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kptxx"]
+atlas = ExtResource("2_reyvy")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+script = ExtResource("3_okaqk")
+Name = "Temple Guard Hilt"
+Description = "A capybara. With a bird on it"
+Texture = SubResource("AtlasTexture_kptxx")
+ComponentType = 1
+MaxLifetimeSales = 500.0
+BaseCost = 15.0
+ComponentStats = SubResource("Resource_tbo2k")
+metadata/_custom_type_script = "uid://7vh6twlpsabw"

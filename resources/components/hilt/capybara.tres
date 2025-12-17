@@ -13,12 +13,12 @@ metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ro5h7"]
 atlas = ExtResource("2_fouya")
-region = Rect2(32, 32, 32, 32)
+region = Rect2(32, 0, 32, 32)
 
 [resource]
 script = ExtResource("3_su6ow")
 Name = "Capybara Hilt"
-Description = "A capybara. With a bird on it"
+Description = "A capybara"
 Texture = SubResource("AtlasTexture_ro5h7")
 ComponentType = 1
 MaxLifetimeSales = 500.0
