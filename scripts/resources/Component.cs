@@ -21,15 +21,26 @@ public partial class Component : Resource
     [Export]
     public ComponentType ComponentType { get; set; }
 
-    /// <summary>
-    ///     The maximum sales that this component can have before the nature damage reaches 100%
-    /// </summary>
     [Export]
-    public float MaxLifetimeSales { get; set; }
+    public Rarity Rarity { get; set; }
 
     [Export]
-    public float BaseCost { get; set; }
+    public Cost Cost { get; set; }
 
     [Export]
     public ComponentStats ComponentStats { get; set; }
+}
+
+public enum Rarity
+{
+    Abundant = 4000,
+    Common = 1500,
+    Rare = 500
+}
+
+public enum Cost
+{
+    Cheap = 10,
+    Normal = 25,
+    Expensive = 75
 }

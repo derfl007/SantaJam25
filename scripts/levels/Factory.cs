@@ -209,6 +209,11 @@ public partial class Factory : NodeOverlay
     {
         foreach (var bladeComponent in _bladeComponents.Where(card => card.ComponentStats.NatureDebt < 100))
         {
+            if (bladeComponent.ComponentStats.Cost == -1)
+            {
+                bladeComponent.ComponentStats.Cost = (int)bladeComponent.Cost;
+            }
+
             var card = _cardScene.Instantiate<Card>();
             card.Component = bladeComponent;
             _bladeCards.AddCard(card);
@@ -216,6 +221,11 @@ public partial class Factory : NodeOverlay
 
         foreach (var hiltComponent in _hiltComponents.Where(card => card.ComponentStats.NatureDebt < 100))
         {
+            if (hiltComponent.ComponentStats.Cost == -1)
+            {
+                hiltComponent.ComponentStats.Cost = (int)hiltComponent.Cost;
+            }
+
             var card = _cardScene.Instantiate<Card>();
             card.Component = hiltComponent;
             _hiltCards.AddCard(card);
@@ -223,6 +233,11 @@ public partial class Factory : NodeOverlay
 
         foreach (var quenchComponent in _quenchComponents.Where(card => card.ComponentStats.NatureDebt < 100))
         {
+            if (quenchComponent.ComponentStats.Cost == -1)
+            {
+                quenchComponent.ComponentStats.Cost = (int)quenchComponent.Cost;
+            }
+
             var card = _cardScene.Instantiate<Card>();
             card.Component = quenchComponent;
             _quenchCards.AddCard(card);
@@ -396,10 +411,10 @@ public partial class Factory : NodeOverlay
 
             component.ComponentStats.NatureDebt = Math.Max(100,
                 component.ComponentStats.NatureDebt +
-                (int)Math.Floor(componentSales / component.MaxLifetimeSales * 100));
+                (int)Math.Floor(componentSales / (float)component.Rarity * 100));
 
             component.ComponentStats.Cost =
-                (int)Math.Floor(component.BaseCost * (1 + component.ComponentStats.NatureDebt / 100f));
+                (int)Math.Floor((int)component.Cost * (1 + component.ComponentStats.NatureDebt / 100f));
 
             component.ComponentStats.Demand =
                 Math.Clamp(
@@ -424,9 +439,9 @@ public partial class Factory : NodeOverlay
 
         // enemy 1: cheap
         var enemy1Weapon = new Weapon();
-        enemy1Weapon.Blade = _bladeComponents.MinBy(c => c.BaseCost);
-        enemy1Weapon.Hilt = _hiltComponents.MinBy(c => c.BaseCost);
-        enemy1Weapon.Quench = _quenchComponents.MinBy(c => c.BaseCost);
+        enemy1Weapon.Blade = _bladeComponents.MinBy(c => (int)c.Cost);
+        enemy1Weapon.Hilt = _hiltComponents.MinBy(c => (int)c.Cost);
+        enemy1Weapon.Quench = _quenchComponents.MinBy(c => (int)c.Cost);
         enemy1Weapon.Quality = (int)((new RandomNumberGenerator().RandfRange(0.6f, 1f) - _qualityBuffs[0]) * 10) / 10f;
         GlobalGameState.Instance.CurrentSave.Enemy1Stats.CurrentWeapon = enemy1Weapon;
 
@@ -446,9 +461,9 @@ public partial class Factory : NodeOverlay
 
         // enemy 3: most expensive
         var enemy3Weapon = new Weapon();
-        enemy3Weapon.Blade = _bladeComponents.MaxBy(c => c.BaseCost);
-        enemy3Weapon.Hilt = _hiltComponents.MaxBy(c => c.BaseCost);
-        enemy3Weapon.Quench = _quenchComponents.MaxBy(c => c.BaseCost);
+        enemy3Weapon.Blade = _bladeComponents.MaxBy(c => (int)c.Cost);
+        enemy3Weapon.Hilt = _hiltComponents.MaxBy(c => (int)c.Cost);
+        enemy3Weapon.Quench = _quenchComponents.MaxBy(c => (int)c.Cost);
         enemy3Weapon.Quality =
             (int)((new RandomNumberGenerator().RandfRange(0.8f, 1.2f) - _qualityBuffs[2]) * 10) / 10f;
         GlobalGameState.Instance.CurrentSave.Enemy3Stats.CurrentWeapon = enemy3Weapon;

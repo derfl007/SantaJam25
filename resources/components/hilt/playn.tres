@@ -6,9 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_tbo2k"]
 script = ExtResource("1_4m8vy")
-Cost = 15
-BaseValue = 30
-Demand = 5.0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4m8vy"]
@@ -18,10 +15,10 @@ region = Rect2(128, 64, 32, 32)
 [resource]
 script = ExtResource("3_nw0k6")
 Name = "Playn Hilt"
-Description = "No, not a plane... It's a rare metal called Playn"
+Description = "Modeled after the Airbus A320"
 Texture = SubResource("AtlasTexture_4m8vy")
 ComponentType = 1
-MaxLifetimeSales = 500.0
-BaseCost = 15.0
+Rarity = 4000
+Cost = 75
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

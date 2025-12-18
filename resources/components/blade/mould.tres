@@ -6,10 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_0vlv8"]
 script = ExtResource("1_f22xg")
-Cost = 10
-BaseValue = 20
-Demand = 5.0
-NatureDebt = 0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f22xg"]
@@ -22,7 +18,7 @@ script = ExtResource("3_6rv30")
 Name = "Mould Blade"
 Description = "A Blade moulded after... my car keys..."
 Texture = SubResource("AtlasTexture_f22xg")
-MaxLifetimeSales = 500.0
-BaseCost = 10.0
+Rarity = 500
+Cost = 10
 ComponentStats = SubResource("Resource_0vlv8")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

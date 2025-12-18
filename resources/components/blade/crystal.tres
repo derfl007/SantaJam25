@@ -6,10 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_0vlv8"]
 script = ExtResource("1_8jhf7")
-Cost = 75
-BaseValue = 150
-Demand = 5.0
-NatureDebt = 0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8jhf7"]
@@ -22,7 +18,7 @@ script = ExtResource("3_dyxon")
 Name = "Crystal Blade"
 Description = "A beautiful blade forged from the most expensive crystals. It looks like a key... Is it a key?"
 Texture = SubResource("AtlasTexture_8jhf7")
-MaxLifetimeSales = 500.0
-BaseCost = 75.0
+Rarity = 500
+Cost = 75
 ComponentStats = SubResource("Resource_0vlv8")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

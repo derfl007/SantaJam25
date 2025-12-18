@@ -6,9 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_tbo2k"]
 script = ExtResource("1_5w3h0")
-Cost = 15
-BaseValue = 30
-Demand = 5.0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5w3h0"]
@@ -18,10 +15,10 @@ region = Rect2(96, 32, 32, 32)
 [resource]
 script = ExtResource("3_s0v8i")
 Name = "Crin Hilt"
-Description = "A capybara. With a bird on it"
+Description = "A Multi Tool Hilt"
 Texture = SubResource("AtlasTexture_5w3h0")
 ComponentType = 1
-MaxLifetimeSales = 500.0
-BaseCost = 15.0
+Rarity = 1500
+Cost = 25
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

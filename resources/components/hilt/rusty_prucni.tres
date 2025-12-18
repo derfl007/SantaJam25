@@ -6,9 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_tbo2k"]
 script = ExtResource("1_qy33o")
-Cost = 15
-BaseValue = 30
-Demand = 5.0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qy33o"]
@@ -18,10 +15,10 @@ region = Rect2(128, 0, 32, 32)
 [resource]
 script = ExtResource("3_ebgjp")
 Name = "Rusty Prucni Hilt"
-Description = "A capybara. With a bird on it"
+Description = "Forgotten on the battlefield"
 Texture = SubResource("AtlasTexture_qy33o")
 ComponentType = 1
-MaxLifetimeSales = 500.0
-BaseCost = 15.0
+Rarity = 1500
+Cost = 10
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

@@ -6,9 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_tbo2k"]
 script = ExtResource("1_i5d2j")
-Cost = 10
-BaseValue = 30
-Demand = 5.0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5d2j"]
@@ -18,10 +15,10 @@ region = Rect2(0, 32, 32, 32)
 [resource]
 script = ExtResource("3_7rsfd")
 Name = "Pallurho Star Hilt"
-Description = "A capybara. With a bird on it"
+Description = "Poyo"
 Texture = SubResource("AtlasTexture_i5d2j")
 ComponentType = 1
-MaxLifetimeSales = 500.0
-BaseCost = 15.0
+Rarity = 1500
+Cost = 25
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

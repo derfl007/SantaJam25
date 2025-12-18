@@ -38,9 +38,9 @@ public partial class Weapon : Resource
 
     public int CalculateProfit(int sales)
     {
-        var totalBaseValue = Blade.ComponentStats.BaseValue +
-                             Hilt.ComponentStats.BaseValue +
-                             Quench.ComponentStats.BaseValue;
+        var totalBaseValue = (int)Blade.Cost * 2 +
+                             (int)Hilt.Cost * 2 +
+                             (int)Quench.Cost * 2;
 
         return (totalBaseValue - GetTotalCost()) * sales;
     }

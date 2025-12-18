@@ -6,10 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_0vlv8"]
 script = ExtResource("1_38hsn")
-Cost = 25.0
-BaseValue = 50
-Demand = 5.0
-NatureDebt = 0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_38hsn"]
@@ -22,7 +18,7 @@ script = ExtResource("3_ikutx")
 Name = "Broadaxe Blade"
 Description = "A simple broadaxe blade"
 Texture = SubResource("AtlasTexture_38hsn")
-MaxLifetimeSales = 4000.0
-BaseCost = 25.0
+Rarity = 4000
+Cost = 25
 ComponentStats = SubResource("Resource_0vlv8")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

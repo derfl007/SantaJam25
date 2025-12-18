@@ -6,9 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_tbo2k"]
 script = ExtResource("1_fjdjy")
-Cost = 1
-BaseValue = 2
-Demand = 5.0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjdjy"]
@@ -17,11 +14,11 @@ region = Rect2(64, 32, 32, 32)
 
 [resource]
 script = ExtResource("3_pdifv")
-Name = "Twig"
-Description = "Possible the cheapest hilt you've ever seen..."
+Name = "Willow Tree Root"
+Description = "Perfect Hilt for Nature Magic or Druids"
 Texture = SubResource("AtlasTexture_fjdjy")
 ComponentType = 1
-MaxLifetimeSales = 1000.0
-BaseCost = 1.0
+Rarity = 4000
+Cost = 10
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

@@ -6,9 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_tbo2k"]
 script = ExtResource("1_q55xy")
-Cost = 15
-BaseValue = 30
-Demand = 5.0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q55xy"]
@@ -18,10 +15,10 @@ region = Rect2(0, 64, 32, 32)
 [resource]
 script = ExtResource("3_oponv")
 Name = "Vauquelin Hilt"
-Description = "A capybara. With a bird on it"
+Description = "Fancy Battleaxe reforged into a Hilt"
 Texture = SubResource("AtlasTexture_q55xy")
 ComponentType = 1
-MaxLifetimeSales = 500.0
-BaseCost = 15.0
+Rarity = 4000
+Cost = 75
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

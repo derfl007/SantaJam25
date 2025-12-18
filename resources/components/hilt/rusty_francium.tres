@@ -6,9 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_tbo2k"]
 script = ExtResource("1_68ojr")
-Cost = 15
-BaseValue = 30
-Demand = 5.0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68ojr"]
@@ -18,10 +15,10 @@ region = Rect2(64, 96, 32, 32)
 [resource]
 script = ExtResource("3_gf0lj")
 Name = "Rusty Francium Hilt"
-Description = "A capybara. With a bird on it"
+Description = "A rusty and radioactive Hilt"
 Texture = SubResource("AtlasTexture_68ojr")
 ComponentType = 1
-MaxLifetimeSales = 500.0
-BaseCost = 15.0
+Rarity = 4000
+Cost = 10
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

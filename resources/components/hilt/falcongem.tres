@@ -6,9 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_tbo2k"]
 script = ExtResource("1_oteu5")
-Cost = 15
-BaseValue = 30
-Demand = 5.0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oteu5"]
@@ -18,10 +15,10 @@ region = Rect2(96, 96, 32, 32)
 [resource]
 script = ExtResource("3_gig3c")
 Name = "Falcon Gem Hilt"
-Description = "A capybara. With a bird on it"
+Description = "A Falcon dipped in Pyrite"
 Texture = SubResource("AtlasTexture_oteu5")
 ComponentType = 1
-MaxLifetimeSales = 500.0
-BaseCost = 15.0
+Rarity = 1500
+Cost = 75
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

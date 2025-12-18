@@ -10,13 +10,10 @@ namespace SantaJam25.scripts.resources;
 public partial class ComponentStats : Resource
 {
     [Export]
-    public int Cost { get; set; }
-
-    [Export]
-    public int BaseValue { get; set; }
+    public int Cost { get; set; } = -1;
 
     [Export(PropertyHint.Range, "1,10")]
-    public float Demand { get; set; }
+    public float Demand { get; set; } = 5f;
 
     [Export(PropertyHint.Range, "0,100")]
     public int NatureDebt { get; set; }

@@ -6,10 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_0vlv8"]
 script = ExtResource("1_mp2pd")
-Cost = 10
-BaseValue = 20
-Demand = 5.0
-NatureDebt = 0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mp2pd"]
@@ -22,7 +18,7 @@ script = ExtResource("3_ma2jn")
 Name = "Cacti Blade"
 Description = "Spiky blade forged from... I don't know, a cactus?"
 Texture = SubResource("AtlasTexture_mp2pd")
-MaxLifetimeSales = 4000.0
-BaseCost = 10.0
+Rarity = 4000
+Cost = 10
 ComponentStats = SubResource("Resource_0vlv8")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

@@ -6,9 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_tbo2k"]
 script = ExtResource("1_l4csg")
-Cost = 15
-BaseValue = 30
-Demand = 5.0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4csg"]
@@ -18,10 +15,10 @@ region = Rect2(128, 96, 32, 32)
 [resource]
 script = ExtResource("3_wrjel")
 Name = "Eye of Zucchero Hilt"
-Description = "A capybara. With a bird on it"
+Description = "Some people hope that a magical blade made of light will come out"
 Texture = SubResource("AtlasTexture_l4csg")
 ComponentType = 1
-MaxLifetimeSales = 500.0
-BaseCost = 15.0
+Rarity = 500
+Cost = 75
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

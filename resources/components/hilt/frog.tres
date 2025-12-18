@@ -6,9 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_tbo2k"]
 script = ExtResource("1_clhbq")
-Cost = 5
-BaseValue = 15
-Demand = 5.0
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_clhbq"]
@@ -17,11 +14,11 @@ region = Rect2(0, 96, 32, 32)
 
 [resource]
 script = ExtResource("3_4pdxl")
-Name = "Frog Hilt"
-Description = "A frog... Ethically sourced of course"
+Name = "Litoria Caerulea Hilt"
+Description = "The name means Green Tree Frog or something"
 Texture = SubResource("AtlasTexture_clhbq")
 ComponentType = 1
-MaxLifetimeSales = 500.0
-BaseCost = 5.0
+Rarity = 500
+Cost = 25
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"
