@@ -18,7 +18,5 @@ script = ExtResource("3_dajjs")
 Name = "Rusty Snake Blade"
 Description = "A blade that has rusted so much that it looks like a snake"
 Texture = SubResource("AtlasTexture_xcptg")
-Rarity = 4000
-Cost = 10
 ComponentStats = SubResource("Resource_0vlv8")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Component" load_steps=4 format=3 uid="uid://vqj6oecgqpct"]
+
+[ext_resource type="Script" uid="uid://b3xvqi7mjldq4" path="res://scripts/resources/ComponentStats.cs" id="1_yee41"]
+[ext_resource type="Script" uid="uid://7vh6twlpsabw" path="res://scripts/resources/Component.cs" id="2_bpxbn"]
+
+[sub_resource type="Resource" id="Resource_7s3b3"]
+script = ExtResource("1_yee41")
+metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
+
+[resource]
+script = ExtResource("2_bpxbn")
+Name = "Milk"
+Description = "Straight from the local farm"
+Color = Color(1, 0.31764707, 0.7294118, 0.57254905)
+ComponentType = 2
+Rarity = 1
+ComponentStats = SubResource("Resource_7s3b3")
+metadata/_custom_type_script = "uid://7vh6twlpsabw"

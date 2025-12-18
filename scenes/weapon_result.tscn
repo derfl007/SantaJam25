@@ -48,11 +48,10 @@ anchors_preset = -1
 anchor_top = 0.66700006
 anchor_bottom = 1.0
 offset_top = -0.03200531
-offset_right = 72.83199
+offset_right = 96.83199
 grow_vertical = 0
 bbcode_enabled = true
-text = "Player"
-horizontal_alignment = 1
+text = "Dragonboi"
 vertical_alignment = 2
 
 [node name="QualityLabel" type="RichTextLabel" parent="." index="4"]
@@ -63,10 +62,9 @@ anchor_left = 0.66700006
 anchor_top = 0.66700006
 anchor_right = 0.66700006
 anchor_bottom = 1.0
-offset_left = -55.786964
+offset_left = -39.786964
 offset_top = -0.03200531
-offset_right = 63.935974
+offset_right = 104.21304
 bbcode_enabled = true
-text = "Quality: [color=black]???"
-horizontal_alignment = 1
+text = "Quality: [color=black]Perfect"
 vertical_alignment = 2

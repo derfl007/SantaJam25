@@ -18,7 +18,5 @@ Name = "Willow Tree Root"
 Description = "Perfect Hilt for Nature Magic or Druids"
 Texture = SubResource("AtlasTexture_fjdjy")
 ComponentType = 1
-Rarity = 4000
-Cost = 10
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

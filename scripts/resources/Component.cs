@@ -29,18 +29,42 @@ public partial class Component : Resource
 
     [Export]
     public ComponentStats ComponentStats { get; set; }
+
+    public int GetMaxLifeTimeSales()
+    {
+        return Rarity switch
+        {
+            Rarity.Abundant => 200,
+            Rarity.Common => 100,
+            Rarity.Rare => 75,
+            Rarity.Infinite => 999999,
+            _ => 0
+        };
+    }
+
+    public int GetCost()
+    {
+        return Cost switch
+        {
+            Cost.Cheap => 10,
+            Cost.Normal => 25,
+            Cost.Expensive => 75,
+            _ => 0
+        };
+    }
 }
 
 public enum Rarity
 {
-    Abundant = 4000,
-    Common = 1500,
-    Rare = 500
+    Abundant,
+    Common,
+    Rare,
+    Infinite
 }
 
 public enum Cost
 {
-    Cheap = 10,
-    Normal = 25,
-    Expensive = 75
+    Cheap,
+    Normal,
+    Expensive
 }

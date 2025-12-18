@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dk6v5i7162gb0"]
+[gd_scene load_steps=52 format=3 uid="uid://dk6v5i7162gb0"]
 
 [ext_resource type="Script" uid="uid://bcwan58i1faoh" path="res://scripts/levels/Factory.cs" id="1_crpm8"]
 [ext_resource type="PackedScene" uid="uid://54ukv0iq5m0p" path="res://scenes/weapon.tscn" id="2_ffyh4"]
@@ -32,6 +32,23 @@
 [ext_resource type="Resource" uid="uid://cre24w0qoquft" path="res://resources/components/blade/saw.tres" id="19_7rwvi"]
 [ext_resource type="Resource" uid="uid://mbcj65dyo4mc" path="res://resources/components/blade/skullspike.tres" id="20_le56x"]
 [ext_resource type="Resource" uid="uid://b3kcdhx5lisrd" path="res://resources/components/blade/twisted.tres" id="21_xv0yw"]
+[ext_resource type="Resource" uid="uid://bmrsr8knodrlp" path="res://resources/components/hilt/branim.tres" id="22_7rwvi"]
+[ext_resource type="Resource" uid="uid://t7prodj8ypb2" path="res://resources/components/hilt/broken_gedra.tres" id="23_le56x"]
+[ext_resource type="Resource" uid="uid://41hkx1rm1h44" path="res://resources/components/hilt/cinnabar.tres" id="25_xv0yw"]
+[ext_resource type="Resource" uid="uid://dptklg77jkrc5" path="res://resources/components/hilt/crin.tres" id="26_8wxqj"]
+[ext_resource type="Resource" uid="uid://270goft640ab" path="res://resources/components/hilt/dwarf_log.tres" id="27_hg3gq"]
+[ext_resource type="Resource" uid="uid://y64hehem7f1w" path="res://resources/components/hilt/eye_of_zucc.tres" id="28_ip2hd"]
+[ext_resource type="Resource" uid="uid://cbirfch3yten" path="res://resources/components/hilt/falcongem.tres" id="29_qxo4m"]
+[ext_resource type="Resource" uid="uid://ol86nql071xw" path="res://resources/components/hilt/malkite.tres" id="31_b0w1h"]
+[ext_resource type="Resource" uid="uid://b0g3d3mjs4m46" path="res://resources/components/hilt/pallurho_star.tres" id="32_fjfrv"]
+[ext_resource type="Resource" uid="uid://c3naysnkgwlj0" path="res://resources/components/hilt/playn.tres" id="33_npsle"]
+[ext_resource type="Resource" uid="uid://dhxhtc0pntpvp" path="res://resources/components/hilt/rabri.tres" id="34_oir8b"]
+[ext_resource type="Resource" uid="uid://gq2ogrcs7o8d" path="res://resources/components/hilt/ritekarin.tres" id="35_etvvo"]
+[ext_resource type="Resource" uid="uid://caosee1ievfjv" path="res://resources/components/hilt/rusty_francium.tres" id="36_scpge"]
+[ext_resource type="Resource" uid="uid://cyx3la3mrkn32" path="res://resources/components/hilt/rusty_prucni.tres" id="37_mw46w"]
+[ext_resource type="Resource" uid="uid://ctaqek5u804wg" path="res://resources/components/hilt/temple_guard.tres" id="38_f6iu6"]
+[ext_resource type="Resource" uid="uid://dda5iykirn36l" path="res://resources/components/hilt/vauquelin.tres" id="40_s8kdf"]
+[ext_resource type="Resource" uid="uid://dcoxpr5wbkj1d" path="res://resources/components/hilt/yaika.tres" id="41_3kani"]
 
 [sub_resource type="Gradient" id="Gradient_ffyh4"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -49,7 +66,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_crpm8")
 _bladeComponents = Array[Object]([ExtResource("2_sntrn"), ExtResource("3_m37j2"), ExtResource("4_x8phn"), ExtResource("5_37f84"), ExtResource("6_m4u2l"), ExtResource("7_4vn33"), ExtResource("8_sbpj8"), ExtResource("9_ev02v"), ExtResource("10_07ei3"), ExtResource("11_a2mxd"), ExtResource("12_im40b"), ExtResource("13_8lab4"), ExtResource("14_lm76d"), ExtResource("15_e3nox"), ExtResource("16_7fmsg"), ExtResource("17_gyj0j"), ExtResource("18_j0v00"), ExtResource("19_7rwvi"), ExtResource("20_le56x"), ExtResource("21_xv0yw")])
-_hiltComponents = Array[Object]([ExtResource("8_jw8ef"), ExtResource("5_uj4xl"), ExtResource("6_mvaxd")])
+_hiltComponents = Array[Object]([ExtResource("22_7rwvi"), ExtResource("23_le56x"), ExtResource("8_jw8ef"), ExtResource("25_xv0yw"), ExtResource("26_8wxqj"), ExtResource("27_hg3gq"), ExtResource("28_ip2hd"), ExtResource("29_qxo4m"), ExtResource("5_uj4xl"), ExtResource("31_b0w1h"), ExtResource("32_fjfrv"), ExtResource("33_npsle"), ExtResource("34_oir8b"), ExtResource("35_etvvo"), ExtResource("36_scpge"), ExtResource("37_mw46w"), ExtResource("38_f6iu6"), ExtResource("6_mvaxd"), ExtResource("40_s8kdf"), ExtResource("41_3kani")])
 _quenchComponents = Array[Object]([ExtResource("4_buliu"), ExtResource("7_i1s1t")])
 _cardScene = ExtResource("5_i1s1t")
 
@@ -121,8 +138,7 @@ text = "Cost: [color=gold]3 Gold"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PowerUpList" type="VBoxContainer" parent="VBoxContainer/WeaponContainer"]
-unique_name_in_owner = true
+[node name="PowerUpScrollContainer" type="ScrollContainer" parent="VBoxContainer/WeaponContainer"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.021000002
@@ -131,8 +147,15 @@ anchor_right = 0.021000002
 anchor_bottom = 0.034
 offset_left = -0.19200134
 offset_top = -0.030000687
-offset_right = 231.808
-offset_bottom = 255.97
+offset_right = 261.12
+offset_bottom = 256.106
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
+
+[node name="PowerUpList" type="VBoxContainer" parent="VBoxContainer/WeaponContainer/PowerUpScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="HiltCardsContainer" type="Control" parent="VBoxContainer"]
@@ -168,9 +191,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -272.0
-offset_top = -89.0
+offset_top = -158.5
 offset_right = 272.0
-offset_bottom = -33.0
+offset_bottom = -102.5
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
@@ -211,9 +234,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -272.0
-offset_top = -89.0
+offset_top = -158.5
 offset_right = 272.0
-offset_bottom = -33.0
+offset_bottom = -102.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 20
@@ -259,9 +282,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -272.0
-offset_top = -89.0
+offset_top = -158.5
 offset_right = 272.0
-offset_bottom = -33.0
+offset_bottom = -102.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 20

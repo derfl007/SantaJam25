@@ -5,19 +5,14 @@
 
 [sub_resource type="Resource" id="Resource_7s3b3"]
 script = ExtResource("1_kojxw")
-Cost = 10
-BaseValue = 20
-Demand = 5.0
-NatureDebt = 10
 metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [resource]
 script = ExtResource("1_17q0g")
-Name = "Water Quench"
-Description = "A simple water quench. Enough to make the blade sturdier, but provides not special effects"
+Name = "Water"
+Description = "Just water"
 Color = Color(0, 0.98039216, 0.9098039, 0.57254905)
 ComponentType = 2
-MaxLifetimeSales = 1000.0
-BaseCost = 10.0
+Rarity = 3
 ComponentStats = SubResource("Resource_7s3b3")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

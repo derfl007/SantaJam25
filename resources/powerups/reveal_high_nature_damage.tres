@@ -7,5 +7,5 @@ script = ExtResource("1_lj40v")
 Name = "Reveal High Nature Damage Card"
 Type = 2
 Usages = 3
-Cost = 5
+Cost = 300
 metadata/_custom_type_script = "uid://1e78oeajvo7e"

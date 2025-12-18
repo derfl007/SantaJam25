@@ -62,7 +62,7 @@ public partial class Cards : Path2D
         {
             var card = CardArray[index];
             card.TargetProgress = startPos;
-            card.TargetYPosition = 0f;
+            card.TargetYPosition = -50f;
             card.ZIndex = index;
             startPos += _distanceBetweenCards;
         }
@@ -80,14 +80,14 @@ public partial class Cards : Path2D
             if (card == highlightedCard)
             {
                 card.TargetProgress = startPos + _distanceToSelectedCard / 2;
-                card.TargetYPosition = -50f;
+                card.TargetYPosition = -150f;
                 card.ZIndex = 1000;
                 startPos += _distanceToSelectedCard * 1.5f;
             }
             else
             {
                 card.TargetProgress = startPos;
-                card.TargetYPosition = 0f;
+                card.TargetYPosition = -50f;
                 card.ZIndex = index;
                 startPos += _distanceBetweenCards;
             }

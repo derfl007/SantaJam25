@@ -25,6 +25,7 @@ public partial class WorldMap : Node2D
 
     private PauseMenu _pauseMenu;
 
+    private bool _isOnCompletedNode;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -104,7 +105,11 @@ public partial class WorldMap : Node2D
                 GD.Print(_nodeMapLayer.GetLocalMousePosition(), tileCoords);
                 var tileData = _nodeMapLayer.GetCellTileData(tileCoords);
                 if (tileData?.GetCustomData("unlocked").AsBool() ?? false)
+                {
                     _player.SetTargetPosition(_nodeMapLayer.MapToGlobal(tileCoords));
+                    _isOnCompletedNode = false;
+                }
+
                 break;
             }
             case InputEventKey { Pressed: true, Keycode: Key.E }:
@@ -118,7 +123,7 @@ public partial class WorldMap : Node2D
 
     public void OpenNodeOverlay()
     {
-        if (_isNodeOverlayOpen || _player.IsMoving) return;
+        if (_isNodeOverlayOpen || _player.IsMoving || _isOnCompletedNode) return;
         GD.Print($"Open overlay for node: {_currentNode.Name}");
 
         var scenePath = _currentNode.Type switch
@@ -153,6 +158,8 @@ public partial class WorldMap : Node2D
         {
             GlobalGameState.Instance.CurrentSave.CompletedLevels.Add(_currentNode.Name);
             _nodeMapLayer.SetCell(_currentNode.TileMapCoords, 1, _currentNode.GetAtlasCoords(true, true));
+            _isOnCompletedNode = true;
+            _player.NinePatchRect.Visible = false;
             foreach (var nextNode in _currentNode.NextNodes)
             {
                 GlobalGameState.Instance.CurrentSave.UnlockedLevels.Add(nextNode.Name);

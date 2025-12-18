@@ -18,7 +18,5 @@ Name = "Branim Hilt X"
 Description = "Gold was too expensive, so we used brass"
 Texture = SubResource("AtlasTexture_233o6")
 ComponentType = 1
-Rarity = 4000
-Cost = 25
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

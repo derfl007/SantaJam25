@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dmsna30c70snf" path="res://assets/sprites/blades.png" id="4_kg30u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d81rb"]
-font_size = 20
+font_size = 10
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ykgyi"]
 atlas = ExtResource("4_kg30u")
@@ -24,6 +24,7 @@ script = ExtResource("1_d81rb")
 Component = ExtResource("2_kg30u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_kg30u")
 
 [node name="Control" type="Control" parent="Sprite2D"]
@@ -34,6 +35,7 @@ offset_top = -89.0
 offset_right = 62.0
 offset_bottom = 87.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TitleColorRect" type="ColorRect" parent="Sprite2D/Control"]
 layout_mode = 1
@@ -41,22 +43,25 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 32.0
 grow_horizontal = 2
+mouse_filter = 1
 color = Color(0.60784316, 0.3882353, 0.23137255, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="TitleLabel" type="Label" parent="Sprite2D/Control/TitleColorRect"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = 28.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = 32.0
 grow_horizontal = 2
-text = "Rusty Blade"
+text = "Bandaged Boltbound Blade"
 label_settings = SubResource("LabelSettings_d81rb")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Sprite2D/Control"]
 unique_name_in_owner = true
@@ -66,6 +71,7 @@ offset_right = 125.0
 offset_bottom = 102.0
 texture = SubResource("AtlasTexture_ykgyi")
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="DescriptionColorRect" type="ColorRect" parent="Sprite2D/Control"]
 layout_mode = 1
@@ -76,7 +82,9 @@ anchor_bottom = 1.0
 offset_top = -72.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 color = Color(0.60784316, 0.3882353, 0.23137255, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="DescriptionLabel" type="Label" parent="Sprite2D/Control/DescriptionColorRect"]
 unique_name_in_owner = true
@@ -94,6 +102,7 @@ grow_vertical = 0
 text = "A cheap rusty iron blade with low durability"
 label_settings = SubResource("LabelSettings_6u4wf")
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="PriceLabel" type="Label" parent="Sprite2D/Control/DescriptionColorRect"]
 unique_name_in_owner = true
@@ -112,9 +121,10 @@ text = "3 Gold"
 label_settings = SubResource("LabelSettings_6u4wf")
 horizontal_alignment = 2
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="Area2D" type="Area2D" parent="Sprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 shape = SubResource("RectangleShape2D_d81rb")
-debug_color = Color(0, 0.6, 0.69803923, 0)
+debug_color = Color(0, 0.6, 0.69803923, 0.07058824)

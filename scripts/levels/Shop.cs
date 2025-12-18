@@ -14,10 +14,12 @@ public partial class Shop : NodeOverlay
 
     private Array<ShopItem> _shopItems;
     private RichTextLabel _costLabel;
+    private RichTextLabel _continueLabel;
 
     public override void _Ready()
     {
         _costLabel = GetNode<RichTextLabel>("%CostLabel");
+        _continueLabel = GetNode<RichTextLabel>("%ContinueLabel");
         var shopItemList = GetNode<VBoxContainer>("%ShopItemList");
         _shopItems = shopItemList.GetChildren().Where(child => child is ShopItem).Cast<ShopItem>()
             .ToGodotArray();
@@ -37,19 +39,31 @@ public partial class Shop : NodeOverlay
     private void CalculateCost()
     {
         var totalCost = _shopItems.Where(s => s.CheckBox.ButtonPressed).Sum(s => s.PowerUp.Cost);
-        _costLabel.Text = $"Total Cost: [color=gold]{totalCost}";
+        var isTooExpensive = totalCost > GlobalGameState.Instance.CurrentSave.PlayerStats.Money;
+        var color = isTooExpensive ? "red" : "gold";
+        _costLabel.Text = $"Total Cost: [color={color}]{totalCost}";
+        _continueLabel.Text = isTooExpensive
+            ? $"Not enough money. Choose different items or press [color=cyan]E[/color] to exit the shop"
+            : totalCost == 0
+                ? "Choose items or press [color=cyan]E[/color] to exit the shop"
+                : "Press [color=cyan]E[/color] to complete your purchase";
     }
 
-    private void Checkout()
+    private bool Checkout()
     {
         var selectedItems = _shopItems.Where(s => s.CheckBox.ButtonPressed).ToList();
 
-        if (selectedItems.Sum(s => s.PowerUp.Cost) > GlobalGameState.Instance.CurrentSave.PlayerStats.Money) return;
+        var totalAmount = selectedItems.Sum(s => s.PowerUp.Cost);
+
+        if (totalAmount > GlobalGameState.Instance.CurrentSave.PlayerStats.Money) return false;
 
         foreach (var powerUp in selectedItems.Select(s => s.PowerUp))
         {
             GlobalGameState.Instance.CurrentSave.PowerUps.Add(powerUp);
         }
+
+        GlobalGameState.Instance.CurrentSave.PlayerStats.Money -= totalAmount;
+        return true;
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -57,8 +71,7 @@ public partial class Shop : NodeOverlay
         switch (@event)
         {
             case InputEventKey { Pressed: true, Keycode: Key.E }:
-                Checkout();
-                EmitSignalCloseNodeOverlay(true);
+                EmitSignalCloseNodeOverlay(Checkout());
                 GetViewport().SetInputAsHandled();
                 break;
             case InputEventKey { Pressed: true, Keycode: Key.Escape }:

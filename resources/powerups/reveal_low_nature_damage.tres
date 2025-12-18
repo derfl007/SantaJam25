@@ -7,5 +7,5 @@ script = ExtResource("1_xagri")
 Name = "Reveal Low Nature Damage Card"
 Type = 3
 Usages = 3
-Cost = 5
+Cost = 200
 metadata/_custom_type_script = "uid://1e78oeajvo7e"

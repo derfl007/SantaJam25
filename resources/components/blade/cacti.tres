@@ -18,7 +18,5 @@ script = ExtResource("3_ma2jn")
 Name = "Cacti Blade"
 Description = "Spiky blade forged from... I don't know, a cactus?"
 Texture = SubResource("AtlasTexture_mp2pd")
-Rarity = 4000
-Cost = 10
 ComponentStats = SubResource("Resource_0vlv8")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

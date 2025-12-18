@@ -103,19 +103,20 @@ text = "Total Cost: [color=gold]0[/color]"
 horizontal_alignment = 1
 
 [node name="ContinueLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -192.0
+offset_left = -624.0
 offset_top = -40.0
-offset_right = 192.0
+offset_right = 624.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("8_rws83")
 bbcode_enabled = true
-text = "Press [color=cyan]E[/color] to complete your purchase"
+text = "Choose items or press [color=cyan]E[/color] to exit the shop"
 horizontal_alignment = 1

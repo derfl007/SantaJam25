@@ -6,5 +6,5 @@
 script = ExtResource("1_56g0f")
 Name = "Reveal Highest Demand Card"
 Usages = 3
-Cost = 5
+Cost = 300
 metadata/_custom_type_script = "uid://1e78oeajvo7e"

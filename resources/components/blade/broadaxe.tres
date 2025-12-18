@@ -18,7 +18,5 @@ script = ExtResource("3_ikutx")
 Name = "Broadaxe Blade"
 Description = "A simple broadaxe blade"
 Texture = SubResource("AtlasTexture_38hsn")
-Rarity = 4000
-Cost = 25
 ComponentStats = SubResource("Resource_0vlv8")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

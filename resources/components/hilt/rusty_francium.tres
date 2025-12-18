@@ -18,7 +18,5 @@ Name = "Rusty Francium Hilt"
 Description = "A rusty and radioactive Hilt"
 Texture = SubResource("AtlasTexture_68ojr")
 ComponentType = 1
-Rarity = 4000
-Cost = 10
 ComponentStats = SubResource("Resource_tbo2k")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"

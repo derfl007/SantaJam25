@@ -7,5 +7,5 @@ script = ExtResource("1_x3uke")
 Name = "Sabotage Random Player's Quality"
 Type = 4
 Usages = 3
-Cost = 5
+Cost = 500
 metadata/_custom_type_script = "uid://1e78oeajvo7e"

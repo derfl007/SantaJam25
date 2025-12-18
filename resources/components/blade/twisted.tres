@@ -11,13 +11,13 @@ metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 [sub_resource type="AtlasTexture" id="AtlasTexture_2qhnr"]
 atlas = ExtResource("2_pqn0h")
 region = Rect2(0, 64, 32, 32)
+filter_clip = true
 
 [resource]
 script = ExtResource("3_qbmc1")
 Name = "Twisted Blade"
 Description = "Not every blade can come out completely straight, this one has a nice twist to it!"
 Texture = SubResource("AtlasTexture_2qhnr")
-Rarity = 4000
-Cost = 75
+Cost = 2
 ComponentStats = SubResource("Resource_0vlv8")
 metadata/_custom_type_script = "uid://7vh6twlpsabw"
