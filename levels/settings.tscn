@@ -91,15 +91,18 @@ size_flags_horizontal = 3
 button_pressed = true
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Sounds"
 horizontal_alignment = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 alignment = 1
 
@@ -118,6 +121,7 @@ size_flags_vertical = 1
 value = 100.0
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="SaveButton" type="Button" parent="VBoxContainer"]

@@ -24,6 +24,8 @@ public partial class Cards : Path2D
 
     private Array<Card> _selectedCards = [];
 
+    private bool _isDoneSpreading;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -43,11 +45,13 @@ public partial class Cards : Path2D
         if (_hoveredCards.Count == 0)
         {
             SpreadCards();
+            _isDoneSpreading = true;
             return;
         }
 
         var highestSelectedCard = _hoveredCards.MaxBy(card => card.ZIndex);
         SelectCard(highestSelectedCard);
+        _isDoneSpreading = false;
     }
 
     public void SpreadCards()

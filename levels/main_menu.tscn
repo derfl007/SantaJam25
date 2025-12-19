@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbtoycls710ry"]
+[gd_scene load_steps=6 format=3 uid="uid://dbtoycls710ry"]
 
 [ext_resource type="Script" uid="uid://dc7mg52wohuws" path="res://scripts/levels/MainMenu.cs" id="1_duh7t"]
 [ext_resource type="PackedScene" uid="uid://8uroesmt8xnh" path="res://levels/save_item.tscn" id="2_6ymyu"]
 [ext_resource type="PackedScene" uid="uid://fatfc1icx7yt" path="res://levels/settings.tscn" id="2_7rktv"]
+[ext_resource type="FontFile" uid="uid://bknyluikcuql3" path="res://assets/fonts/Magicmedieval-pRV1.ttf" id="4_7rktv"]
+[ext_resource type="Texture2D" uid="uid://mq4jq3tchv82" path="res://assets/sprites/logo.png" id="5_3ye4h"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -20,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 
 [node name="ButtonContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -83,10 +85,46 @@ layout_mode = 2
 [node name="Label" parent="SavesContainer/SaveItem3" index="0"]
 text = "Save Game 3"
 
+[node name="SavesBackButton" type="Button" parent="SavesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back"
+
 [node name="Settings" parent="." instance=ExtResource("2_7rktv")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -317.0
+offset_right = 317.0
+offset_bottom = 112.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("4_7rktv")
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[rainbow][wave=5]Hilts & Blades"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(640, 160)
+scale = Vector2(5.5833335, 5.5833335)
+texture = ExtResource("5_3ye4h")
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Confirm deletion"
+initial_position = 2
+size = Vector2i(390, 100)
+ok_button_text = "Yes"
+dialog_text = "Are you sure you want to delete this save?"
+cancel_button_text = "No"
 
 [editable path="SavesContainer/SaveItem"]
 [editable path="SavesContainer/SaveItem2"]

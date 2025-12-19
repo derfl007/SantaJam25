@@ -10,10 +10,16 @@ config_version=5
 
 [application]
 
-config/name="SantaJam25"
+config/name="Hilts & Blades"
+config/version="1.0"
 run/main_scene="uid://dbtoycls710ry"
 config/features=PackedStringArray("4.5", "C#")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.08627451, 0.08627451, 0.08627451, 1)
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/image="uid://mq4jq3tchv82"
+config/icon="uid://mq4jq3tchv82"
+boot_splash/minimum_display_time=1000
 
 [autoload]
 
@@ -23,7 +29,7 @@ GlobalGameState="*res://scripts/autoload/GlobalGameState.cs"
 
 window/size/viewport_width=1280
 window/size/viewport_height=640
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
 [dotnet]
@@ -38,6 +44,3 @@ theme/custom_font="uid://8htxw5mm8mtq"
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-anti_aliasing/quality/msaa_2d=2
-anti_aliasing/quality/screen_space_aa=2
-anti_aliasing/quality/use_taa=true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dk6v5i7162gb0"]
+[gd_scene load_steps=58 format=3 uid="uid://dk6v5i7162gb0"]
 
 [ext_resource type="Script" uid="uid://bcwan58i1faoh" path="res://scripts/levels/Factory.cs" id="1_crpm8"]
 [ext_resource type="PackedScene" uid="uid://54ukv0iq5m0p" path="res://scenes/weapon.tscn" id="2_ffyh4"]
@@ -49,6 +49,12 @@
 [ext_resource type="Resource" uid="uid://ctaqek5u804wg" path="res://resources/components/hilt/temple_guard.tres" id="38_f6iu6"]
 [ext_resource type="Resource" uid="uid://dda5iykirn36l" path="res://resources/components/hilt/vauquelin.tres" id="40_s8kdf"]
 [ext_resource type="Resource" uid="uid://dcoxpr5wbkj1d" path="res://resources/components/hilt/yaika.tres" id="41_3kani"]
+[ext_resource type="Resource" uid="uid://blwm31pfg1blf" path="res://resources/components/quench/honey.tres" id="43_qxo4m"]
+[ext_resource type="Resource" uid="uid://dmwfgwca6irh7" path="res://resources/components/quench/lava.tres" id="44_b0w1h"]
+[ext_resource type="Resource" uid="uid://vqj6oecgqpct" path="res://resources/components/quench/milk.tres" id="45_fjfrv"]
+[ext_resource type="Resource" uid="uid://bohd83t18363k" path="res://resources/components/quench/oil.tres" id="46_npsle"]
+[ext_resource type="Resource" uid="uid://rw8pjn1t1vfn" path="res://resources/components/quench/poison.tres" id="47_oir8b"]
+[ext_resource type="Resource" uid="uid://cdluqajr38kw4" path="res://resources/components/quench/soy_sauce.tres" id="48_etvvo"]
 
 [sub_resource type="Gradient" id="Gradient_ffyh4"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -67,7 +73,7 @@ mouse_filter = 1
 script = ExtResource("1_crpm8")
 _bladeComponents = Array[Object]([ExtResource("2_sntrn"), ExtResource("3_m37j2"), ExtResource("4_x8phn"), ExtResource("5_37f84"), ExtResource("6_m4u2l"), ExtResource("7_4vn33"), ExtResource("8_sbpj8"), ExtResource("9_ev02v"), ExtResource("10_07ei3"), ExtResource("11_a2mxd"), ExtResource("12_im40b"), ExtResource("13_8lab4"), ExtResource("14_lm76d"), ExtResource("15_e3nox"), ExtResource("16_7fmsg"), ExtResource("17_gyj0j"), ExtResource("18_j0v00"), ExtResource("19_7rwvi"), ExtResource("20_le56x"), ExtResource("21_xv0yw")])
 _hiltComponents = Array[Object]([ExtResource("22_7rwvi"), ExtResource("23_le56x"), ExtResource("8_jw8ef"), ExtResource("25_xv0yw"), ExtResource("26_8wxqj"), ExtResource("27_hg3gq"), ExtResource("28_ip2hd"), ExtResource("29_qxo4m"), ExtResource("5_uj4xl"), ExtResource("31_b0w1h"), ExtResource("32_fjfrv"), ExtResource("33_npsle"), ExtResource("34_oir8b"), ExtResource("35_etvvo"), ExtResource("36_scpge"), ExtResource("37_mw46w"), ExtResource("38_f6iu6"), ExtResource("6_mvaxd"), ExtResource("40_s8kdf"), ExtResource("41_3kani")])
-_quenchComponents = Array[Object]([ExtResource("4_buliu"), ExtResource("7_i1s1t")])
+_quenchComponents = Array[Object]([ExtResource("7_i1s1t"), ExtResource("43_qxo4m"), ExtResource("44_b0w1h"), ExtResource("45_fjfrv"), ExtResource("46_npsle"), ExtResource("47_oir8b"), ExtResource("48_etvvo"), ExtResource("4_buliu")])
 _cardScene = ExtResource("5_i1s1t")
 
 [node name="ColorRect" type="ColorRect" parent="."]

@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_e30pg")
 Name = "event_3"
-EventDescription = "Placeholder Text 3"
+EventDescription = "Some components seem to be rarer than others and start to run out rather quickly. You notice the prices continue to rise until the components suddenly disappear"
 NextNodes = Array[Object]([ExtResource("1_d8eey"), ExtResource("2_7xhh7")])
 TileMapCoords = Vector2i(4, 7)
 metadata/_custom_type_script = "uid://7etw0fiuq5hq"

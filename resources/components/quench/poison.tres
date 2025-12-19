@@ -9,9 +9,9 @@ metadata/_custom_type_script = "uid://b3xvqi7mjldq4"
 
 [resource]
 script = ExtResource("2_uus8d")
-Name = "Health Potion"
+Name = "Poison"
 Description = "Inflicts extra poison damage"
-Color = Color(1, 0.31764707, 0.7294118, 0.57254905)
+Color = Color(0.28926924, 0.7302265, 0.40831852, 0.57254905)
 ComponentType = 2
 Rarity = 1
 Cost = 1

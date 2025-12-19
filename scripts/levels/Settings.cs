@@ -22,7 +22,7 @@ public partial class Settings : Control
 
         _saveButton = GetNode<Button>("%SaveButton");
 
-        _windowModeButton.Selected = (int)DisplayServer.WindowGetMode();
+        _windowModeButton.Selected = _windowModeButton.GetItemIndex((int)DisplayServer.WindowGetMode());
 
         _vSyncModeButton.ButtonPressed = (int)DisplayServer.WindowGetVsyncMode() > 0;
 
@@ -31,8 +31,9 @@ public partial class Settings : Control
 
         _windowModeButton.ItemSelected += index =>
         {
-            DisplayServer.WindowSetMode((DisplayServer.WindowMode)index);
-            DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, index > 0);
+            DisplayServer.WindowSetMode((DisplayServer.WindowMode)_windowModeButton.GetItemId((int)index));
+            DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless,
+                _windowModeButton.GetItemId((int)index) > 0);
         };
 
         _vSyncModeButton.Pressed += () =>

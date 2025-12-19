@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("3_025x1")
 Name = "event_4"
-EventDescription = "Placeholder Text 4"
+EventDescription = "You almost made it, only a few weapons left to prove your worth as the greatest weapon designer on the island."
 NextNodes = Array[Object]([ExtResource("1_41j1e"), ExtResource("2_3bmx7")])
 TileMapCoords = Vector2i(19, 9)
 metadata/_custom_type_script = "uid://7etw0fiuq5hq"
